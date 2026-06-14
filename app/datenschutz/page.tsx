@@ -11,7 +11,7 @@ export default function DatenschutzPage() {
         >
           ← Zur Startseite
         </Link>
-        <p className="text-base font-semibold text-indigo-400 mt-10">
+        <p className="text-base font-semibold text-indigo-400 ">
           Tormann & Bewegungsschule Weinviertel
         </p>
 
