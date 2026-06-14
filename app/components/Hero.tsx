@@ -28,7 +28,7 @@ export default function Hero() {
           <div className="mx-auto max-w-2xl py-32 sm:py-48 lg:py-56">
             <div className="text-center">
               <h1 className="text-balance text-5xl font-semibold tracking-tight text-white sm:text-7xl">
-                In Form für's Leben
+                In Form für&#39;s Leben
               </h1>
               <p className="mt-8 text-pretty text-lg font-medium text-gray-400 sm:text-xl/8">
                 Jeder einzelne muss persönliche Hürden überwinden. Wie schnell

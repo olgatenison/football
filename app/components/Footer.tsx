@@ -1,6 +1,10 @@
 import Link from "next/link";
 
-const navigation = [{ name: "Datenschutz", href: "/datenschutz" }];
+const navigation = [
+  { name: "Datenschutz", href: "/datenschutz" },
+  { name: "Impressum", href: "/impressum" },
+  { name: "AGB", href: "/agb" },
+];
 
 export default function Footer() {
   return (
@@ -22,22 +26,27 @@ export default function Footer() {
             <p className="font-semibold text-white">Kontakt</p>
 
             <p>
-              Adresse folgt
+              Union Tormann- und Bewegungsschule Weinviertel
               <br />
               Österreich
             </p>
 
             <p>
+              <span className="font-medium text-white">E-Mail:</span>{" "}
               <a
-                href="mailto:tormannschuleweinviertel@hotmail.com"
+                href="mailto:franz.machaczek@hotmail.com"
                 className="hover:text-white"
               >
-                tormannschuleweinviertel@hotmail.com
+                franz.machaczek@hotmail.com
               </a>
             </p>
 
             <p>
-              <a href="tel:+436643919374" className="hover:text-white">
+              <span className="font-medium text-white">Telefon:</span>{" "}
+              <a
+                href="tel:+436643919374"
+                className="hover:text-white"
+              >
                 +43 664 391 93 74
               </a>
             </p>
@@ -62,14 +71,7 @@ export default function Footer() {
 
             <p className="text-sm/6 text-gray-500">
               Erstellt von{" "}
-              <a
-                href="https://dvi.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="font-semibold text-gray-400 hover:text-white"
-              >
-                DVI
-              </a>
+              <span className="font-semibold text-gray-400">DVI</span>
             </p>
           </div>
         </div>
