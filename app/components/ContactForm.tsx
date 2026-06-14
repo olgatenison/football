@@ -1,24 +1,128 @@
-import { ChevronDownIcon } from "@heroicons/react/16/solid";
+"use client";
+
+import { ChangeEvent, FormEvent, useState } from "react";
+
+type FormData = {
+  name: string;
+  company: string;
+  email: string;
+  phone: string;
+  message: string;
+  privacy: boolean;
+};
+
+type FormErrors = {
+  name?: string;
+  email?: string;
+  phone?: string;
+  message?: string;
+  privacy?: string;
+};
 
 export default function ContactForm() {
+  const [formData, setFormData] = useState<FormData>({
+    name: "",
+    company: "",
+    email: "",
+    phone: "",
+    message: "",
+    privacy: false,
+  });
+
+  const [errors, setErrors] = useState<FormErrors>({});
+  const [success, setSuccess] = useState(false);
+  const [isSending, setIsSending] = useState(false);
+
+  function handleChange(
+    e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) {
+    const { name, value, type } = e.target;
+    const checked =
+      e.target instanceof HTMLInputElement ? e.target.checked : false;
+
+    setFormData((prev) => ({
+      ...prev,
+      [name]: type === "checkbox" ? checked : value,
+    }));
+
+    setErrors((prev) => ({
+      ...prev,
+      [name]: "",
+    }));
+  }
+
+  function validate() {
+    const newErrors: FormErrors = {};
+
+    if (formData.name.trim().length < 2) {
+      newErrors.name = "Bitte geben Sie Ihren Namen ein.";
+    }
+
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
+      newErrors.email = "Bitte geben Sie eine gültige E-Mail-Adresse ein.";
+    }
+
+    if (formData.phone && !/^[0-9+\s()-]{6,}$/.test(formData.phone)) {
+      newErrors.phone = "Bitte geben Sie eine gültige Telefonnummer ein.";
+    }
+
+    if (formData.message.trim().length < 10) {
+      newErrors.message = "Die Nachricht sollte mindestens 10 Zeichen haben.";
+    }
+
+    if (!formData.privacy) {
+      newErrors.privacy = "Bitte akzeptieren Sie die Datenschutzerklärung.";
+    }
+
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
+  }
+
+  async function handleSubmit(e: FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+
+    setSuccess(false);
+
+    if (!validate()) return;
+
+    try {
+      setIsSending(true);
+
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
+
+      if (!response.ok) {
+        throw new Error("Fehler beim Senden");
+      }
+
+      setSuccess(true);
+
+      setFormData({
+        name: "",
+        company: "",
+        email: "",
+        phone: "",
+        message: "",
+        privacy: false,
+      });
+    } catch (error) {
+      console.error(error);
+      alert("Fehler beim Senden. Bitte versuchen Sie es später erneut.");
+    } finally {
+      setIsSending(false);
+    }
+  }
+
   return (
     <section
       id="kontakt"
       className="relative isolate bg-gray-900 px-6 py-24 sm:py-32 lg:px-8"
     >
-      <div
-        aria-hidden="true"
-        className="absolute inset-x-0 -top-40 -z-10 transform-gpu overflow-hidden blur-3xl sm:-top-80"
-      >
-        <div
-          style={{
-            clipPath:
-              "polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)",
-          }}
-          className="relative left-1/2 -z-10 aspect-1155/678 w-144.5 max-w-none -translate-x-1/2 rotate-30 bg-linear-to-tr from-[#80caff] to-[#4f46e5] opacity-20 sm:left-[calc(50%-40rem)] sm:w-288.75"
-        />
-      </div>
-
       <div className="mx-auto max-w-2xl text-center">
         <p className="text-base/7 font-semibold text-indigo-400">Kontakt</p>
 
@@ -31,29 +135,28 @@ export default function ContactForm() {
         </p>
       </div>
 
-      <form
-        action="#"
-        method="POST"
-        className="mx-auto mt-16 max-w-xl sm:mt-20"
-      >
+      <form onSubmit={handleSubmit} className="mx-auto mt-16 max-w-xl sm:mt-20">
         <div className="grid grid-cols-1 gap-x-8 gap-y-6 sm:grid-cols-2">
           <div className="sm:col-span-2">
             <label
               htmlFor="name"
               className="block text-sm/6 font-semibold text-white"
             >
-              Name
+              Name *
             </label>
-            <div className="mt-2.5">
-              <input
-                id="name"
-                name="name"
-                type="text"
-                autoComplete="name"
-                required
-                className="block w-full rounded-md bg-white/5 px-3.5 py-2 text-base text-white outline-1 -outline-offset-1 outline-white/10 placeholder:text-gray-500 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-500"
-              />
-            </div>
+
+            <input
+              id="name"
+              name="name"
+              type="text"
+              value={formData.name}
+              onChange={handleChange}
+              className="mt-2.5 block w-full rounded-md bg-white/5 px-3.5 py-2 text-base text-white outline-1 -outline-offset-1 outline-white/10 placeholder:text-gray-500 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-500"
+            />
+
+            {errors.name && (
+              <p className="mt-2 text-sm text-red-400">{errors.name}</p>
+            )}
           </div>
 
           <div className="sm:col-span-2">
@@ -63,15 +166,15 @@ export default function ContactForm() {
             >
               Unternehmen
             </label>
-            <div className="mt-2.5">
-              <input
-                id="company"
-                name="company"
-                type="text"
-                autoComplete="organization"
-                className="block w-full rounded-md bg-white/5 px-3.5 py-2 text-base text-white outline-1 -outline-offset-1 outline-white/10 placeholder:text-gray-500 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-500"
-              />
-            </div>
+
+            <input
+              id="company"
+              name="company"
+              type="text"
+              value={formData.company}
+              onChange={handleChange}
+              className="mt-2.5 block w-full rounded-md bg-white/5 px-3.5 py-2 text-base text-white outline-1 -outline-offset-1 outline-white/10 placeholder:text-gray-500 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-500"
+            />
           </div>
 
           <div className="sm:col-span-2">
@@ -79,59 +182,44 @@ export default function ContactForm() {
               htmlFor="email"
               className="block text-sm/6 font-semibold text-white"
             >
-              E-Mail
+              E-Mail *
             </label>
-            <div className="mt-2.5">
-              <input
-                id="email"
-                name="email"
-                type="email"
-                autoComplete="email"
-                required
-                className="block w-full rounded-md bg-white/5 px-3.5 py-2 text-base text-white outline-1 -outline-offset-1 outline-white/10 placeholder:text-gray-500 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-500"
-              />
-            </div>
+
+            <input
+              id="email"
+              name="email"
+              type="email"
+              value={formData.email}
+              onChange={handleChange}
+              className="mt-2.5 block w-full rounded-md bg-white/5 px-3.5 py-2 text-base text-white outline-1 -outline-offset-1 outline-white/10 placeholder:text-gray-500 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-500"
+            />
+
+            {errors.email && (
+              <p className="mt-2 text-sm text-red-400">{errors.email}</p>
+            )}
           </div>
 
           <div className="sm:col-span-2">
             <label
-              htmlFor="phone-number"
+              htmlFor="phone"
               className="block text-sm/6 font-semibold text-white"
             >
               Telefon
             </label>
-            <div className="mt-2.5">
-              <div className="flex rounded-md bg-white/5 outline-1 -outline-offset-1 outline-white/10 has-[input:focus-within]:outline-2 has-[input:focus-within]:-outline-offset-2 has-[input:focus-within]:outline-indigo-500">
-                <div className="grid shrink-0 grid-cols-1 focus-within:relative">
-                  <select
-                    id="country"
-                    name="country"
-                    autoComplete="country"
-                    aria-label="Land"
-                    defaultValue="AT"
-                    className="col-start-1 row-start-1 w-full appearance-none rounded-md bg-transparent py-2 pl-3.5 pr-7 text-base text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-500 sm:text-sm/6"
-                  >
-                    <option value="AT">AT</option>
-                    <option value="DE">DE</option>
-                    <option value="CH">CH</option>
-                  </select>
 
-                  <ChevronDownIcon
-                    aria-hidden="true"
-                    className="pointer-events-none col-start-1 row-start-1 mr-2 size-5 self-center justify-self-end text-gray-400 sm:size-4"
-                  />
-                </div>
+            <input
+              id="phone"
+              name="phone"
+              type="tel"
+              value={formData.phone}
+              onChange={handleChange}
+              placeholder="+43 664 391 93 74"
+              className="mt-2.5 block w-full rounded-md bg-white/5 px-3.5 py-2 text-base text-white outline-1 -outline-offset-1 outline-white/10 placeholder:text-gray-500 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-500"
+            />
 
-                <input
-                  id="phone-number"
-                  name="phone-number"
-                  type="tel"
-                  autoComplete="tel"
-                  placeholder="+43 664 391 93 74"
-                  className="block min-w-0 grow bg-transparent py-1.5 pl-1 pr-3 text-base text-white placeholder:text-gray-500 focus:outline-0 sm:text-sm/6"
-                />
-              </div>
-            </div>
+            {errors.phone && (
+              <p className="mt-2 text-sm text-red-400">{errors.phone}</p>
+            )}
           </div>
 
           <div className="sm:col-span-2">
@@ -139,60 +227,67 @@ export default function ContactForm() {
               htmlFor="message"
               className="block text-sm/6 font-semibold text-white"
             >
-              Nachricht
+              Nachricht *
             </label>
-            <div className="mt-2.5">
-              <textarea
-                id="message"
-                name="message"
-                rows={5}
-                required
-                className="block w-full rounded-md bg-white/5 px-3.5 py-2 text-base text-white outline-1 -outline-offset-1 outline-white/10 placeholder:text-gray-500 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-500"
-                defaultValue=""
-              />
-            </div>
+
+            <textarea
+              id="message"
+              name="message"
+              rows={5}
+              value={formData.message}
+              onChange={handleChange}
+              className="mt-2.5 block w-full rounded-md bg-white/5 px-3.5 py-2 text-base text-white outline-1 -outline-offset-1 outline-white/10 placeholder:text-gray-500 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-500"
+            />
+
+            {errors.message && (
+              <p className="mt-2 text-sm text-red-400">{errors.message}</p>
+            )}
           </div>
 
-          <div className="flex gap-x-4 sm:col-span-2">
-            <div className="flex h-6 items-center">
-              <div className="group relative inline-flex w-8 shrink-0 rounded-full bg-white/5 p-px outline-offset-2 outline-indigo-500 ring-1 ring-inset ring-white/10 transition-colors duration-200 ease-in-out has-[:checked]:bg-indigo-500 has-[:focus-visible]:outline-2">
-                <span className="size-4 rounded-full bg-white shadow-sm ring-1 ring-gray-900/5 transition-transform duration-200 ease-in-out group-has-[:checked]:translate-x-3.5" />
-                <input
-                  id="privacy"
-                  name="privacy"
-                  type="checkbox"
-                  required
-                  aria-label="Datenschutzerklärung akzeptieren"
-                  className="absolute inset-0 size-full appearance-none focus:outline-none"
-                />
-              </div>
+          <div className="sm:col-span-2">
+            <div className="flex gap-x-4">
+              <input
+                id="privacy"
+                name="privacy"
+                type="checkbox"
+                checked={formData.privacy}
+                onChange={handleChange}
+                className="mt-1 size-4"
+              />
+
+              <label htmlFor="privacy" className="text-sm/6 text-gray-400">
+                Ich willige in die Verarbeitung meiner Daten gemäß der{" "}
+                <a
+                  href="/datenschutz"
+                  className="font-semibold text-indigo-400 hover:text-indigo-300"
+                >
+                  Datenschutzerklärung
+                </a>{" "}
+                ein.
+              </label>
             </div>
 
-            <label htmlFor="privacy" className="text-sm/6 text-gray-400">
-              Ich willige in die Verarbeitung meiner Daten gemäß der{" "}
-              <a
-                href="/datenschutz"
-                className="font-semibold text-indigo-400 hover:text-indigo-300"
-              >
-                Datenschutzerklärung
-              </a>{" "}
-              ein.
-            </label>
+            {errors.privacy && (
+              <p className="mt-2 text-sm text-red-400">{errors.privacy}</p>
+            )}
           </div>
         </div>
 
         <div className="mt-10">
           <button
             type="submit"
-            className="block w-full rounded-md bg-indigo-500 px-3.5 py-2.5 text-center text-sm font-semibold text-white shadow-sm transition hover:bg-indigo-400 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500"
+            disabled={isSending}
+            className="block w-full rounded-md bg-indigo-500 px-3.5 py-2.5 text-center text-sm font-semibold text-white shadow-sm transition hover:bg-indigo-400 disabled:cursor-not-allowed disabled:opacity-60 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500"
           >
-            Absenden
+            {isSending ? "Wird gesendet..." : "Absenden"}
           </button>
         </div>
 
-        <p className="mt-6 text-center text-sm/6 text-gray-400">
-          Vielen Dank! Wir melden uns in Kürze.
-        </p>
+        {success && (
+          <p className="mt-6 text-center text-sm/6 text-green-400">
+            Vielen Dank! Ihre Nachricht wurde erfolgreich gesendet.
+          </p>
+        )}
       </form>
     </section>
   );
