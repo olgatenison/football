@@ -1,128 +1,135 @@
 import Image from "next/image";
 
+const activeCareerLogos = [
+  { src: "/aboutStudy/logo1.png", alt: "Club 1" },
+  { src: "/aboutStudy/logo2.png", alt: "Club 2" },
+  { src: "/aboutStudy/logo3.png", alt: "Club 3" },
+  { src: "/aboutStudy/logo4.png", alt: "Club 4" },
+  { src: "/aboutStudy/logo5.png", alt: "Club 5" },
+  { src: "/aboutStudy/logo6.png", alt: "Club 6" },
+  { src: "/aboutStudy/logo7.png", alt: "Club 7" },
+  { src: "/aboutStudy/logo8.png", alt: "Club 8" },
+  { src: "/aboutStudy/logo9.png", alt: "Club 9" },
+];
+
+const trainerLogos = [
+  { src: "/aboutWork/logo1.png", alt: "Club 1" },
+  { src: "/aboutWork/logo2.png", alt: "Club 2" },
+  { src: "/aboutWork/logo3.png", alt: "Club 3" },
+  { src: "/aboutWork/logo4.png", alt: "Club 4" },
+  { src: "/aboutWork/logo5.png", alt: "Club 5" },
+  { src: "/aboutWork/logo6.png", alt: "Club 6" },
+  { src: "/aboutWork/logo7.png", alt: "Club 7" },
+  { src: "/aboutWork/logo8.png", alt: "Club 8" },
+  { src: "/aboutWork/logo9.png", alt: "Club 9" },
+  { src: "/aboutWork/logo10.png", alt: "Club 10" },
+  { src: "/aboutWork/logo11.png", alt: "Club 11" },
+  { src: "/aboutWork/logo12.png", alt: "Club 12" },
+  { src: "/aboutWork/logo13.png", alt: "Club 13" },
+];
+
+type Logo = {
+  src: string;
+  alt: string;
+};
+
+function LogoGrid({ logos }: { logos: Logo[] }) {
+  return (
+    <div className="mx-auto mt-10 grid max-w-lg grid-cols-2 justify-items-center gap-x-8 gap-y-10 sm:max-w-xl sm:grid-cols-3 lg:max-w-5xl lg:grid-cols-5">
+      {logos.map((logo) => (
+        <div
+          key={logo.src}
+          className="flex h-24 w-40 items-center justify-center opacity-80 transition-all duration-300 ease-out hover:scale-110 hover:opacity-100"
+        >
+          <Image
+            src={logo.src}
+            alt={logo.alt}
+            width={158}
+            height={80}
+            className="max-h-24 max-w-full object-contain"
+          />
+        </div>
+      ))}
+    </div>
+  );
+}
+
 export default function About() {
   return (
-    <div className="bg-gray-900 py-24 sm:py-32">
-      <h2 className="text-balance text-5xl font-semibold tracking-tight text-white sm:text-7xl">
-        Über mich
-      </h2>
-      {/* first block of logo */}
+    <div className="bg-black py-24 sm:py-32">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
-        <h3 className="text-center text-lg/8 font-semibold text-white">
-          Seit über 40 Jahren ist Fußball meine Leidenschaft. Als aktiver
-          Tormann und lizenzierter Tormanntrainer durfte ich wertvolle
-          Erfahrungen auf und neben dem Platz sammeln. Bereits seit 2009 arbeite
-          ich mit Nachwuchs- und Erwachsenentorhütern und unterstütze sie dabei,
-          ihre Technik, Reaktionsfähigkeit und ihr Selbstvertrauen gezielt
-          weiterzuentwickeln. Mit der UEFA-Torwarttrainer-B-Lizenz und
-          jahrzehntelanger Praxiserfahrung weiß ich, worauf es im modernen
-          Tormannspiel ankommt. Mein Ziel ist es, jeden Torhüter individuell zu
-          fördern und dabei zu helfen, das persönliche Potenzial bestmöglich
-          auszuschöpfen.
-        </h3>{" "}
-        <>
-          <p>Aktive Karriere (логотипы 9 клубов)</p>
-        </>
-        <div className="mx-auto mt-10 grid max-w-lg grid-cols-4 items-center gap-x-8 gap-y-10 sm:max-w-xl sm:grid-cols-6 sm:gap-x-10 lg:mx-0 lg:max-w-none lg:grid-cols-5">
-          <Image
-            alt="Transistor"
-            src="https://tailwindcss.com/plus-assets/img/logos/158x48/transistor-logo-white.svg"
-            width={158}
-            height={48}
-            className="col-span-2 max-h-12 w-full object-contain lg:col-span-1"
-          />
-
-          <Image
-            alt="Reform"
-            src="https://tailwindcss.com/plus-assets/img/logos/158x48/reform-logo-white.svg"
-            width={158}
-            height={48}
-            className="col-span-2 max-h-12 w-full object-contain lg:col-span-1"
-          />
-
-          <Image
-            alt="Tuple"
-            src="https://tailwindcss.com/plus-assets/img/logos/158x48/tuple-logo-white.svg"
-            width={158}
-            height={48}
-            className="col-span-2 max-h-12 w-full object-contain lg:col-span-1"
-          />
-
-          <Image
-            alt="SavvyCal"
-            src="https://tailwindcss.com/plus-assets/img/logos/158x48/savvycal-logo-white.svg"
-            width={158}
-            height={48}
-            className="col-span-2 max-h-12 w-full object-contain sm:col-start-2 lg:col-span-1"
-          />
-
-          <Image
-            alt="Statamic"
-            src="https://tailwindcss.com/plus-assets/img/logos/158x48/statamic-logo-white.svg"
-            width={158}
-            height={48}
-            className="col-span-2 col-start-2 max-h-12 w-full object-contain sm:col-start-auto lg:col-span-1"
-          />
+        {/* Шапка */}
+        <div className="mx-auto flex max-w-4xl items-end gap-x-16">
+          <div className="w-48 shrink-0 overflow-hidden rounded-lg">
+            <Image
+              src="/about.png"
+              alt="Über mich"
+              width={300}
+              height={350}
+              className="max-h-80 w-full object-cover transition-transform duration-500 ease-out hover:scale-105"
+            />
+          </div>
+          <div className="relative">
+            <h2 className="max-w-2xl text-balance text-5xl font-semibold tracking-tight text-white sm:text-7xl font-display">
+              Über mich
+            </h2>
+            <p
+              className="absolute -top-12 left-24 font-medium text-4xl text-[#afd63f] "
+              style={{ fontFamily: "'Indie Flower', cursive" }}
+            >
+              Franz Machaczek
+            </p>
+          </div>
         </div>
-      </div>
-      {/* second block of logo */}
-      <div className="mx-auto max-w-7xl px-6 lg:px-8">
-        <h3 className="text-center text-lg/8 font-semibold text-white">
-          Seit über 40 Jahren ist Fußball meine Leidenschaft. Als aktiver
-          Tormann und lizenzierter Tormanntrainer durfte ich wertvolle
-          Erfahrungen auf und neben dem Platz sammeln. Bereits seit 2009 arbeite
-          ich mit Nachwuchs- und Erwachsenentorhütern und unterstütze sie dabei,
-          ihre Technik, Reaktionsfähigkeit und ihr Selbstvertrauen gezielt
-          weiterzuentwickeln. Mit der UEFA-Torwarttrainer-B-Lizenz und
-          jahrzehntelanger Praxiserfahrung weiß ich, worauf es im modernen
-          Tormannspiel ankommt. Mein Ziel ist es, jeden Torhüter individuell zu
-          fördern und dabei zu helfen, das persönliche Potenzial bestmöglich
-          auszuschöpfen.
-        </h3>
-        <>
-          <p>Trainerstationen (логотипы 13 клубов)</p>
-        </>
-        <div className="mx-auto mt-10 grid max-w-lg grid-cols-4 items-center gap-x-8 gap-y-10 sm:max-w-xl sm:grid-cols-6 sm:gap-x-10 lg:mx-0 lg:max-w-none lg:grid-cols-5">
-          <Image
-            alt="Transistor"
-            src="https://tailwindcss.com/plus-assets/img/logos/158x48/transistor-logo-white.svg"
-            width={158}
-            height={48}
-            className="col-span-2 max-h-12 w-full object-contain lg:col-span-1"
-          />
-
-          <Image
-            alt="Reform"
-            src="https://tailwindcss.com/plus-assets/img/logos/158x48/reform-logo-white.svg"
-            width={158}
-            height={48}
-            className="col-span-2 max-h-12 w-full object-contain lg:col-span-1"
-          />
-
-          <Image
-            alt="Tuple"
-            src="https://tailwindcss.com/plus-assets/img/logos/158x48/tuple-logo-white.svg"
-            width={158}
-            height={48}
-            className="col-span-2 max-h-12 w-full object-contain lg:col-span-1"
-          />
-
-          <Image
-            alt="SavvyCal"
-            src="https://tailwindcss.com/plus-assets/img/logos/158x48/savvycal-logo-white.svg"
-            width={158}
-            height={48}
-            className="col-span-2 max-h-12 w-full object-contain sm:col-start-2 lg:col-span-1"
-          />
-
-          <Image
-            alt="Statamic"
-            src="https://tailwindcss.com/plus-assets/img/logos/158x48/statamic-logo-white.svg"
-            width={158}
-            height={48}
-            className="col-span-2 col-start-2 max-h-12 w-full object-contain sm:col-start-auto lg:col-span-1"
-          />
-        </div>
+        {/* Aktive Karriere */}
+        <section className="mt-16">
+          <div className="mx-auto flex max-w-7xl items-start justify-center gap-x-16">
+            <h3 className="mt-1 w-40 shrink-0 text-2xl font-bold text-[#afd63f] font-display">
+              Aktive Karriere
+            </h3>
+            <p className="max-w-2xl text-base/8 font-light text-white">
+              Seit über 40 Jahren ist Fußball meine Leidenschaft. Als aktiver
+              Tormann und lizenzierter Tormanntrainer durfte ich wertvolle
+              Erfahrungen auf und neben dem Platz sammeln. Bereits seit 2009
+              arbeite ich mit Nachwuchs- und Erwachsenentorhütern und
+              unterstütze sie dabei, ihre Technik, Reaktionsfähigkeit und ihr
+              Selbstvertrauen gezielt weiterzuentwickeln.
+              <span className="font-semibold text-black bg-[#afd63f] mx-1 px-1">
+                {" "}
+                Mit der UEFA-Torwarttrainer-B-Lizenz und jahrzehntelanger
+                Praxiserfahrung weiß ich, worauf es im modernen Tormannspiel
+                ankommt.{" "}
+              </span>
+              Mein Ziel ist es, jeden Torhüter individuell zu fördern und dabei
+              zu helfen, das persönliche Potenzial bestmöglich auszuschöpfen.
+            </p>
+          </div>
+          <div className="mt-16">
+            <LogoGrid logos={activeCareerLogos} />
+          </div>
+        </section>
+        {/* Trainerstationen */}
+        <section className="mt-28">
+          <div className="mx-auto flex max-w-7xl items-start justify-center gap-x-16">
+            <p className="max-w-2xl text-right text-base/8 font-light text-white">
+              Als Tormanntrainer habe ich in zahlreichen Vereinen und
+              Nachwuchsakademien gearbeitet und dabei Torhüter aller
+              Altersklassen betreut.{" "}
+              <span className="font-semibold text-black bg-[#afd63f] mx-1 px-1">
+                Seit 2009 begleite ich Torhüter auf ihrem Weg — vom
+                Nachwuchsspieler bis zum Profi.
+              </span>{" "}
+              Mein Ziel ist es, jeden Torhüter individuell zu fördern und dabei
+              zu helfen, das persönliche Potenzial bestmöglich auszuschöpfen.
+            </p>
+            <h3 className="mt-1 w-40 shrink-0 text-2xl font-bold text-[#afd63f] font-display">
+              Trainer&shy;stationen
+            </h3>
+          </div>
+          <div className="mt-16">
+            <LogoGrid logos={trainerLogos} />
+          </div>
+        </section>
       </div>
     </div>
   );
