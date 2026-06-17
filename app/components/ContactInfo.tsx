@@ -4,6 +4,7 @@ import {
   MapPinIcon,
   PhoneIcon,
 } from "@heroicons/react/24/outline";
+import ContactForm from "./ContactForm";
 
 const contactItems = [
   {
@@ -20,8 +21,8 @@ const contactItems = [
   },
   {
     title: "Adresse",
-    text: "Adresse folgt",
-    subtext: "Österreich",
+    text: "Adresse folgt, Österreich",
+    subtext: "",
     href: null,
     icon: MapPinIcon,
   },
@@ -31,18 +32,26 @@ export default function ContactInfo() {
   return (
     <section
       id="kontakt-direkt"
-      className="relative overflow-hidden bg-gray-900 py-24 sm:py-32"
+      className="relative overflow-hidden bg-black py-24 "
     >
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
-        <div className="grid items-center gap-16 lg:grid-cols-2">
+        <div className="grid items-start gap-16 lg:grid-cols-2">
           <div>
-            <p className="text-base/7 font-semibold text-indigo-400">Kontakt</p>
+            <p
+              className="font-medium text-4xl text-[#afd63f]"
+              style={{ fontFamily: "'Indie Flower', cursive" }}
+            >
+              Kontakt
+            </p>
 
-            <h2 className="mt-2 text-balance text-4xl font-semibold tracking-tight text-white sm:text-5xl">
+            <h2
+              className="mt-6 text-balance text-5xl/20
+             font-semibold tracking-tight text-white font-display max-w-md"
+            >
               Sie erreichen uns auch direkt
             </h2>
 
-            <p className="mt-6 text-lg/8 text-gray-400">
+            <p className="  text-base/8 font-light text-white mt-6 text-balance">
               Haben Sie Fragen zum Tormanntraining, zu Camps oder individuellen
               Trainingspaketen? Kontaktieren Sie uns gerne telefonisch oder per
               E-Mail.
@@ -51,27 +60,27 @@ export default function ContactInfo() {
             <div className="mt-12 max-w-xl space-y-10">
               {contactItems.map((item) => (
                 <div key={item.title} className="flex gap-x-6">
-                  <div className="flex size-11 shrink-0 items-center justify-center rounded-lg bg-indigo-500">
+                  <div className="flex size-11 shrink-0 items-center justify-center rounded-lg bg-[#afd63f]">
                     <item.icon
                       aria-hidden="true"
-                      className="size-6 text-white"
+                      className="size-6 text-white "
                     />
                   </div>
 
                   <div>
-                    <h3 className="text-base/7 font-semibold text-white">
+                    <h3 className="text-base font-semibold text-white">
                       {item.title}
                     </h3>
 
                     {item.href ? (
                       <a
                         href={item.href}
-                        className="mt-2 block text-base/7 text-gray-400 transition hover:text-white"
+                        className=" block text-base text-gray-400 transition hover:text-white"
                       >
                         {item.text}
                       </a>
                     ) : (
-                      <p className="mt-2 text-base/7 text-gray-400">
+                      <p className=" text-base/7 text-gray-400">
                         {item.text}
                         {item.subtext && (
                           <>
@@ -88,15 +97,7 @@ export default function ContactInfo() {
           </div>
 
           <div className="relative">
-            <div className="absolute -inset-4 rounded-3xl bg-indigo-500/10 blur-2xl" />
-
-            <Image
-              alt="Tormanntraining Kontakt"
-              src="/contact/contact-info.jpg"
-              width={900}
-              height={1100}
-              className="relative aspect-[4/5] w-full rounded-3xl bg-gray-800 object-cover ring-1 ring-white/10"
-            />
+            <ContactForm />
           </div>
         </div>
       </div>

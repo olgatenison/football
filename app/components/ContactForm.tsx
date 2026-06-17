@@ -34,7 +34,7 @@ export default function ContactForm() {
   const [isSending, setIsSending] = useState(false);
 
   function handleChange(
-    e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+    e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
   ) {
     const { name, value, type } = e.target;
     const checked =
@@ -119,29 +119,28 @@ export default function ContactForm() {
   }
 
   return (
-    <section
-      id="kontakt"
-      className="relative isolate bg-gray-900 px-6 py-24 sm:py-32 lg:px-8"
-    >
-      <div className="mx-auto max-w-2xl text-center">
-        <p className="text-base/7 font-semibold text-indigo-400">Kontakt</p>
+    <section id="kontakt" className="relative isolate bg-black px-6  lg:px-8">
+      {/* <div className="mx-auto max-w-2xl text-center">
+        <p
+          className="font-medium text-4xl text-[#afd63f]"
+          style={{ fontFamily: "'Indie Flower', cursive" }}
+        >
+          Kontakt
+        </p>
 
-        <h2 className="text-balance text-4xl font-semibold tracking-tight text-white sm:text-5xl">
+        <h2 className="mt-6 text-balance text-3xl font-semibold tracking-tight text-white font-display">
           Schreiben Sie uns
         </h2>
 
-        <p className="mt-4 text-lg/8 text-gray-400">
+        <p className="max-w-lg mx-auto text-base/8 font-light text-white mt-6">
           Wir melden uns schnellstmöglich mit passenden Informationen bei Ihnen.
         </p>
-      </div>
+      </div> */}
 
-      <form onSubmit={handleSubmit} className="mx-auto mt-16 max-w-xl sm:mt-20">
+      <form onSubmit={handleSubmit} className="mx-auto mt-12 max-w-xl ">
         <div className="grid grid-cols-1 gap-x-8 gap-y-6 sm:grid-cols-2">
           <div className="sm:col-span-2">
-            <label
-              htmlFor="name"
-              className="block text-sm/6 font-semibold text-white"
-            >
+            <label htmlFor="name" className="block text-sm text-white">
               Name *
             </label>
 
@@ -151,7 +150,7 @@ export default function ContactForm() {
               type="text"
               value={formData.name}
               onChange={handleChange}
-              className="mt-2.5 block w-full rounded-md bg-white/5 px-3.5 py-2 text-base text-white outline-1 -outline-offset-1 outline-white/10 placeholder:text-gray-500 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-500"
+              className="mt-1 block w-full rounded-md bg-white/5 px-3.5 py-2 text-base text-white outline-1 -outline-offset-1 outline-white/10 placeholder:text-gray-500 focus:outline-2 focus:-outline-offset-2 focus:outline-[#afd63f]"
             />
 
             {errors.name && (
@@ -160,10 +159,7 @@ export default function ContactForm() {
           </div>
 
           <div className="sm:col-span-2">
-            <label
-              htmlFor="company"
-              className="block text-sm/6 font-semibold text-white"
-            >
+            <label htmlFor="company" className="block text-sm text-white">
               Unternehmen
             </label>
 
@@ -173,15 +169,12 @@ export default function ContactForm() {
               type="text"
               value={formData.company}
               onChange={handleChange}
-              className="mt-2.5 block w-full rounded-md bg-white/5 px-3.5 py-2 text-base text-white outline-1 -outline-offset-1 outline-white/10 placeholder:text-gray-500 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-500"
+              className="mt-1 block w-full rounded-md bg-white/5 px-3.5 py-2 text-base text-white outline-1 -outline-offset-1 outline-white/10 placeholder:text-gray-500 focus:outline-2 focus:-outline-offset-2 focus:outline-[#afd63f]"
             />
           </div>
 
           <div className="sm:col-span-2">
-            <label
-              htmlFor="email"
-              className="block text-sm/6 font-semibold text-white"
-            >
+            <label htmlFor="email" className="block text-sm text-white">
               E-Mail *
             </label>
 
@@ -191,7 +184,7 @@ export default function ContactForm() {
               type="email"
               value={formData.email}
               onChange={handleChange}
-              className="mt-2.5 block w-full rounded-md bg-white/5 px-3.5 py-2 text-base text-white outline-1 -outline-offset-1 outline-white/10 placeholder:text-gray-500 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-500"
+              className="mt-1 block w-full rounded-md bg-white/5 px-3.5 py-2 text-base text-white outline-1 -outline-offset-1 outline-white/10 placeholder:text-gray-500 focus:outline-2 focus:-outline-offset-2 focus:outline-[#afd63f]"
             />
 
             {errors.email && (
@@ -200,10 +193,7 @@ export default function ContactForm() {
           </div>
 
           <div className="sm:col-span-2">
-            <label
-              htmlFor="phone"
-              className="block text-sm/6 font-semibold text-white"
-            >
+            <label htmlFor="phone" className="block text-sm text-white">
               Telefon
             </label>
 
@@ -214,7 +204,7 @@ export default function ContactForm() {
               value={formData.phone}
               onChange={handleChange}
               placeholder="+43 664 391 93 74"
-              className="mt-2.5 block w-full rounded-md bg-white/5 px-3.5 py-2 text-base text-white outline-1 -outline-offset-1 outline-white/10 placeholder:text-gray-500 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-500"
+              className="mt-1 block w-full rounded-md bg-white/5 px-3.5 py-2 text-base text-white outline-1 -outline-offset-1 outline-white/10 placeholder:text-gray-500 focus:outline-2 focus:-outline-offset-2 focus:outline-[#afd63f]"
             />
 
             {errors.phone && (
@@ -223,10 +213,7 @@ export default function ContactForm() {
           </div>
 
           <div className="sm:col-span-2">
-            <label
-              htmlFor="message"
-              className="block text-sm/6 font-semibold text-white"
-            >
+            <label htmlFor="message" className="block text-sm text-white">
               Nachricht *
             </label>
 
@@ -236,7 +223,7 @@ export default function ContactForm() {
               rows={5}
               value={formData.message}
               onChange={handleChange}
-              className="mt-2.5 block w-full rounded-md bg-white/5 px-3.5 py-2 text-base text-white outline-1 -outline-offset-1 outline-white/10 placeholder:text-gray-500 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-500"
+              className="mt-1 block w-full rounded-md bg-white/5 px-3.5 py-2 text-base text-white outline-1 -outline-offset-1 outline-white/10 placeholder:text-gray-500 focus:outline-2 focus:-outline-offset-2 focus:outline-[#afd63f]"
             />
 
             {errors.message && (
@@ -259,7 +246,7 @@ export default function ContactForm() {
                 Ich willige in die Verarbeitung meiner Daten gemäß der{" "}
                 <a
                   href="/datenschutz"
-                  className="font-semibold text-indigo-400 hover:text-indigo-300"
+                  className="font-semibold text-[#afd63f] hover:text-[#273810]"
                 >
                   Datenschutzerklärung
                 </a>{" "}
@@ -277,14 +264,14 @@ export default function ContactForm() {
           <button
             type="submit"
             disabled={isSending}
-            className="block w-full rounded-md bg-indigo-500 px-3.5 py-2.5 text-center text-sm font-semibold text-white shadow-sm transition hover:bg-indigo-400 disabled:cursor-not-allowed disabled:opacity-60 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500"
+            className="rounded-md bg-[#afd63f] px-7 py-3.5 text-sm font-semibold text-black shadow-lg transition-colors duration-300 ease-out hover:bg-[#273810] hover:text-white w-full"
           >
             {isSending ? "Wird gesendet..." : "Absenden"}
           </button>
         </div>
 
         {success && (
-          <p className="mt-6 text-center text-sm/6 text-green-400">
+          <p className="mt-6 text-center text-sm/6 text-[#afd63f]">
             Vielen Dank! Ihre Nachricht wurde erfolgreich gesendet.
           </p>
         )}

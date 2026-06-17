@@ -7,7 +7,7 @@ import Sponsors from "./components/Sponsors";
 import CampSection from "./components/CampSection";
 import YogaSection from "./components/YogaSection";
 import WhyUs from "./components/WhyUs";
-import ContactForm from "./components/ContactForm";
+
 import ContactInfo from "./components/ContactInfo";
 
 export default function Home() {
@@ -21,7 +21,7 @@ export default function Home() {
       <CampSection />
       <YogaSection />
       <WhyUs />
-      <ContactForm />
+
       <ContactInfo />
     </main>
   );

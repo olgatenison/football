@@ -8,9 +8,9 @@ const navigation = [
 
 export default function Footer() {
   return (
-    <footer className="bg-gray-950">
+    <footer className="bg-black">
       <div className="mx-auto max-w-7xl px-6 py-12 lg:px-8">
-        <div className="flex flex-col gap-10 border-t border-white/10 pt-10 md:flex-row md:items-start md:justify-between">
+        <div className="flex flex-col gap-10 border-t border-[#afd63f] pt-10 md:flex-row md:items-start md:justify-between">
           <div>
             <Link href="/" className="text-lg font-semibold text-white">
               Tormann & Bewegungsschule Weinviertel
@@ -43,17 +43,14 @@ export default function Footer() {
 
             <p>
               <span className="font-medium text-white">Telefon:</span>{" "}
-              <a
-                href="tel:+436643919374"
-                className="hover:text-white"
-              >
+              <a href="tel:+436643919374" className="hover:text-white">
                 +43 664 391 93 74
               </a>
             </p>
           </div>
         </div>
 
-        <div className="mt-10 flex flex-col gap-4 border-t border-white/10 pt-8 sm:flex-row sm:items-center sm:justify-between">
+        <div className="mt-10 flex flex-col gap-4 border-t border-[#afd63f] pt-8 sm:flex-row sm:items-center sm:justify-between">
           <p className="text-sm/6 text-gray-400">
             © 2026 Tormann & Bewegungsschule Weinviertel
           </p>
@@ -69,9 +66,8 @@ export default function Footer() {
               </Link>
             ))}
 
-            <p className="text-sm/6 text-gray-500">
-              Erstellt von{" "}
-              <span className="font-semibold text-gray-400">DVI</span>
+            <p className="text-sm/6 text-[#afd63f]">
+              Erstellt von <span className="font-bold ">DVI</span>
             </p>
           </div>
         </div>
