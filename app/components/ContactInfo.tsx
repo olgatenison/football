@@ -32,7 +32,7 @@ export default function ContactInfo() {
   return (
     <section
       id="kontakt-direkt"
-      className="relative overflow-hidden bg-black py-24 "
+      className="relative overflow-hidden bg-black pb-24 pt-16"
     >
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <div className="grid items-start gap-16 lg:grid-cols-2">
@@ -60,10 +60,10 @@ export default function ContactInfo() {
             <div className="mt-12 max-w-xl space-y-10">
               {contactItems.map((item) => (
                 <div key={item.title} className="flex gap-x-6">
-                  <div className="flex size-11 shrink-0 items-center justify-center rounded-lg bg-[#afd63f]">
+                  <div className="flex size-11 shrink-0 items-center justify-center rounded-lg bg-blck border-[#afd63f] border">
                     <item.icon
                       aria-hidden="true"
-                      className="size-6 text-white "
+                      className="size-6 text-[#afd63f]"
                     />
                   </div>
 
