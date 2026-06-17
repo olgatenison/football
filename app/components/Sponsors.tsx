@@ -3,78 +3,90 @@ import Image from "next/image";
 const sponsors = [
   {
     name: "Sponsor 1",
-    logo: "/sponsors/sponsor-1.svg",
+    logo: "/sponsor/p1.png",
   },
   {
     name: "Sponsor 2",
-    logo: "/sponsors/sponsor-2.svg",
+    logo: "/sponsor/s1.png",
   },
   {
     name: "Sponsor 3",
-    logo: "/sponsors/sponsor-3.svg",
-  },
-  {
-    name: "Partner 1",
-    logo: "/sponsors/partner-1.svg",
-  },
-  {
-    name: "Partner 2",
-    logo: "/sponsors/partner-2.svg",
-  },
-  {
-    name: "Partner 3",
-    logo: "/sponsors/partner-3.svg",
+    logo: "/sponsor/s2.png",
   },
 ];
 
 export default function Sponsors() {
   return (
-    <section id="sponsors" className="bg-gray-900 py-24 sm:py-32">
+    <section
+      id="sponsors"
+      className="bg-black py-24 sm:py-32 bg-contain bg-bottom bg-no-repeat"
+      style={{ backgroundImage: "url('/hero/ballbg.jpg')" }}
+    >
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
-        <div className="grid items-center gap-16 lg:grid-cols-2">
-          <div className="max-w-xl">
-            <p className="text-base/7 font-semibold text-indigo-400">
+        <div className="items-center text-center">
+          <div className="mx-auto">
+            <p
+              className="font-medium text-4xl text-[#afd63f]"
+              style={{ fontFamily: "'Indie Flower', cursive" }}
+            >
               Netzwerk & Unterstützung
             </p>
 
-            <h2 className="mt-2 text-pretty text-4xl font-semibold tracking-tight text-white sm:text-5xl">
+            <h2 className="mt-6 text-balance text-5xl font-semibold tracking-tight text-white font-display">
               Unsere Sponsoren und Partner
             </h2>
-
-            <p className="mt-6 text-lg/8 text-gray-300">
-              Gemeinsam mit unseren Sponsoren und Partnern schaffen wir
-              bestmögliche Bedingungen für professionelles Tormanntraining,
-              Bewegung, Entwicklung und Freude am Sport.
-            </p>
-
-            <div className="mt-8">
-              <a
-                href="#kontakt"
-                className="inline-flex items-center rounded-md bg-indigo-500 px-4 py-2.5 text-sm font-semibold text-white shadow-sm transition hover:bg-indigo-400 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500"
-              >
-                Partner werden
-                <span aria-hidden="true" className="ml-2">
-                  →
-                </span>
-              </a>
-            </div>
           </div>
 
-          <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:pl-8">
-            {sponsors.map((sponsor) => (
-              <div
-                key={sponsor.name}
-                className="flex h-28 items-center justify-center rounded-2xl bg-white/5 p-6 ring-1 ring-white/10 transition hover:bg-white/10"
-              >
-                <Image
-                  alt={sponsor.name}
-                  src={sponsor.logo}
-                  width={180}
-                  height={80}
-                  className="max-h-12 w-full object-contain"
-                />
-              </div>
-            ))}
+          <p className="max-w-2xl mx-auto text-base/8 font-light text-white mt-6">
+            Gemeinsam mit unseren Sponsoren und Partnern schaffen wir
+            bestmögliche Bedingungen für professionelles Tormanntraining,
+            Bewegung, Entwicklung und Freude am Sport.
+          </p>
+
+          <div className="mt-8">
+            <a
+              href="#"
+              className="rounded-md bg-[#afd63f] px-7 py-3.5 text-sm font-semibold text-black shadow-lg transition-colors duration-300 ease-out hover:bg-[#273810] hover:text-white"
+            >
+              Partner werden
+            </a>
+          </div>
+        </div>
+
+        <div className="mt-16 grid grid-cols-2 gap-8 sm:grid-cols-4 items-center">
+          {/* 1 logo left */}
+          <div className="flex h-32 items-center justify-center sm:justify-start">
+            <Image
+              alt={sponsors[0].name}
+              src={sponsors[0].logo}
+              width={320}
+              height={200}
+              className="max-h-34 w-full object-contain"
+            />
+          </div>
+
+          {/* empty column */}
+          <div className="hidden sm:block" />
+
+          {/* 2 logos right */}
+          <div className="flex h-32 items-center justify-center">
+            <Image
+              alt={sponsors[1].name}
+              src={sponsors[1].logo}
+              width={320}
+              height={200}
+              className="max-h-34 w-full object-contain"
+            />
+          </div>
+
+          <div className="flex h-32 items-center justify-center sm:justify-end">
+            <Image
+              alt={sponsors[2].name}
+              src={sponsors[2].logo}
+              width={320}
+              height={200}
+              className="max-h-34 w-full object-contain"
+            />
           </div>
         </div>
       </div>
