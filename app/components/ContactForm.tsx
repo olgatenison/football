@@ -242,7 +242,7 @@ export default function ContactForm() {
                 className="mt-1 size-4"
               />
 
-              <label htmlFor="privacy" className="text-sm/6 text-gray-400">
+              <label htmlFor="privacy" className="text-sm/6 text-white/80">
                 Ich willige in die Verarbeitung meiner Daten gemäß der{" "}
                 <a
                   href="/datenschutz"

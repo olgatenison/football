@@ -9,6 +9,7 @@ import YogaSection from "./components/YogaSection";
 import WhyUs from "./components/WhyUs";
 
 import ContactInfo from "./components/ContactInfo";
+import Camp from "./components/Camp";
 
 export default function Home() {
   return (
@@ -18,6 +19,7 @@ export default function Home() {
       <About />
       <WhoIsFor />
       <Sponsors />
+      <Camp />
       <CampSection />
       <YogaSection />
       <WhyUs />
