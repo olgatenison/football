@@ -52,7 +52,7 @@ export default function WhyUs() {
   return (
     <section id="warum-wir" className="bg-black py-24">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
-        <div className="mx-auto grid max-w-2xl gap-16 pb-24 lg:mx-0 lg:max-w-none lg:grid-cols-3">
+        <div className="mx-auto grid max-w-2xl gap-16 pb-32 lg:mx-0 lg:max-w-none lg:grid-cols-3">
           <div>
             <p
               className="text-4xl font-medium text-[#afd63f]"
@@ -61,7 +61,7 @@ export default function WhyUs() {
               Deine Vorteile
             </p>
 
-            <h2 className="mt-6 max-w-md text-balance font-display text-5xl/20 font-semibold tracking-tight text-white">
+            <h2 className="mt-6 max-w-md text-balance font-display text-5xl/20 font-semibold tracking-wider text-white">
               WARUM UNS WÄHLEN?
             </h2>
 
@@ -93,7 +93,7 @@ export default function WhyUs() {
                   {benefit.title}
                 </dt>
 
-                <dd className="mt-3 text-balance text-base/8 font-light text-white/60">
+                <dd className="mt-3 text-balance text-base/8 font-light text-white/80">
                   {benefit.description}
                 </dd>
               </div>
@@ -102,8 +102,8 @@ export default function WhyUs() {
         </div>
       </div>
 
-      <div className="w-full overflow-hidden bg-[#afd63f]">
-        <div className="mx-auto flex max-w-7xl flex-col items-center justify-center gap-8 px-6  lg:flex-row lg:gap-x-12 lg:px-8">
+      <div className="w-full  bg-[#afd63f]">
+        <div className="mx-auto flex max-w-7xl flex-col items-center justify-center gap-16 lg:flex-row px-6  lg:px-8">
           <Image
             width={600}
             height={388}
@@ -112,7 +112,10 @@ export default function WhyUs() {
             className="h-auto w-full max-w-md shrink-0 object-contain lg:max-w-lg -m-10"
           />
 
-          <p className="text-lg font-medium text-black"  >
+          <p
+            className="text-4xl font-medium text-black max-w-lg"
+            style={{ fontFamily: "'Indie Flower', cursive" }}
+          >
             Werde Teil der Tormannschule Weinviertel und entwickle dein volles
             Potenzial im Tor.
           </p>

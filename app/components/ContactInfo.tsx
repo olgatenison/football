@@ -32,7 +32,7 @@ export default function ContactInfo() {
   return (
     <section
       id="kontakt-direkt"
-      className="relative overflow-hidden bg-black pb-24 pt-16"
+      className="relative overflow-hidden bg-black pb-24 pt-12"
     >
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <div className="grid items-start gap-16 lg:grid-cols-2">
@@ -75,12 +75,12 @@ export default function ContactInfo() {
                     {item.href ? (
                       <a
                         href={item.href}
-                        className=" block text-base text-gray-400 transition hover:text-white"
+                        className=" block text-base text-white/80 transition hover:text-white"
                       >
                         {item.text}
                       </a>
                     ) : (
-                      <p className=" text-base/7 text-gray-400">
+                      <p className=" text-base/7 text-white/80">
                         {item.text}
                         {item.subtext && (
                           <>

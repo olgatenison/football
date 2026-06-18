@@ -55,7 +55,7 @@ export default function Sponsors() {
 
         <div className="mt-16 grid grid-cols-2 gap-8 sm:grid-cols-4 items-center">
           {/* 1 logo left */}
-          <div className="flex h-32 items-center justify-center sm:justify-start">
+          <div className="flex h-32 items-center justify-center sm:justify-start opacity-80 transition-all duration-300 ease-out hover:scale-110 hover:opacity-100">
             <Image
               alt={sponsors[0].name}
               src={sponsors[0].logo}
@@ -69,7 +69,7 @@ export default function Sponsors() {
           <div className="hidden sm:block" />
 
           {/* 2 logos right */}
-          <div className="flex h-32 items-center justify-center">
+          <div className="flex h-32 items-center justify-center opacity-80 transition-all duration-300 ease-out hover:scale-110 hover:opacity-100">
             <Image
               alt={sponsors[1].name}
               src={sponsors[1].logo}
@@ -79,7 +79,7 @@ export default function Sponsors() {
             />
           </div>
 
-          <div className="flex h-32 items-center justify-center sm:justify-end">
+          <div className="flex h-32 items-center justify-center sm:justify-end opacity-80 transition-all duration-300 ease-out hover:scale-110 hover:opacity-100">
             <Image
               alt={sponsors[2].name}
               src={sponsors[2].logo}
