@@ -7,7 +7,7 @@ import Sponsors from "./components/Sponsors";
 
 import YogaSection from "./components/YogaSection";
 import WhyUs from "./components/WhyUs";
-
+import RegistrationForm from "./components/RegistrationForm";
 import ContactInfo from "./components/ContactInfo";
 import Camp from "./components/Camp";
 

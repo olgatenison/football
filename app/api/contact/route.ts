@@ -1,15 +1,14 @@
 import { NextResponse } from "next/server";
 import nodemailer from "nodemailer";
 
-export async function POST(req: Request) {
+export async function POST(request: Request) {
   try {
-    const data = await req.json();
-
-    console.log("EMAIL_USER:", process.env.EMAIL_USER);
-    console.log("EMAIL_PASS exists:", Boolean(process.env.EMAIL_PASS));
+    const data = await request.json();
 
     const transporter = nodemailer.createTransport({
-      service: "gmail",
+      host: "smtp.gmail.com",
+      port: Number(process.env.SMTP_PORT) || 465,
+      secure: true,
       auth: {
         user: process.env.EMAIL_USER,
         pass: process.env.EMAIL_PASS,
@@ -17,28 +16,42 @@ export async function POST(req: Request) {
     });
 
     await transporter.sendMail({
-      from: `"Website Kontakt" <${process.env.EMAIL_USER}>`,
-      to: "ammelymm@gmail.com",
-      replyTo: data.email,
-      subject: `Neue Kontaktanfrage von ${data.name}`,
+      from: `"Tormannschule Anmeldung" <${process.env.EMAIL_USER}>`,
+      to: process.env.MAIL_TO,
+      replyTo: data.parentEmail,
+      subject: `Neue Anmeldung Sommercamp: ${data.childFirstName} ${data.childLastName}`,
       html: `
-        <h2>Neue Kontaktanfrage</h2>
-        <p><strong>Name:</strong> ${data.name}</p>
-        <p><strong>Unternehmen:</strong> ${data.company || "-"}</p>
-        <p><strong>E-Mail:</strong> ${data.email}</p>
-        <p><strong>Telefon:</strong> ${data.phone || "-"}</p>
-        <p><strong>Nachricht:</strong></p>
-        <p>${data.message}</p>
+        <h2>Neue Anmeldung zum Tormanntrainingscamp</h2>
+
+        <h3>Camp</h3>
+        <p><strong>Termin:</strong> ${data.camp}</p>
+        <p><strong>Ort:</strong> ${data.location}</p>
+        <p><strong>Zeit:</strong> ${data.time}</p>
+
+        <h3>Eltern / Erziehungsberechtigte</h3>
+        <p><strong>Name:</strong> ${data.parentFirstName} ${data.parentLastName}</p>
+        <p><strong>E-Mail:</strong> ${data.parentEmail}</p>
+        <p><strong>Telefon:</strong> ${data.parentPhone}</p>
+
+        <h3>Kind / Teilnehmer</h3>
+        <p><strong>Name:</strong> ${data.childFirstName} ${data.childLastName}</p>
+        <p><strong>Alter:</strong> ${data.age}</p>
+        <p><strong>Notfallnummer:</strong> ${data.emergencyPhone}</p>
+
+        <h3>Anmerkungen / Wünsche</h3>
+        <p>${data.notes || "Keine Anmerkungen"}</p>
+
+        <p><strong>AGB akzeptiert:</strong> ${data.agb ? "Ja" : "Nein"}</p>
       `,
     });
 
-    return NextResponse.json({ success: true });
+    return NextResponse.json({ ok: true });
   } catch (error) {
-    console.error("CONTACT API ERROR:", error);
+    console.error("Registration error:", error);
 
     return NextResponse.json(
-      { success: false, error: String(error) },
-      { status: 500 }
+      { ok: false, message: "Fehler beim Senden" },
+      { status: 500 },
     );
   }
 }
