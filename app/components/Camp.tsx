@@ -1,47 +1,83 @@
-const features = [
+import {
+  CalendarDaysIcon,
+  MapPinIcon,
+  TrophyIcon,
+  UserGroupIcon,
+  SparklesIcon,
+  ArrowRightIcon,
+} from "@heroicons/react/24/outline";
+import Link from "next/link";
+const campDetails = [
   {
-    name: "Sleek design",
-    description:
-      "The machined kettle has a smooth black finish and contemporary shape that stands apart from most plastic appliances.",
+    icon: CalendarDaysIcon,
+    title: "13. – 14. Juni 2026",
+    text: "Jeweils 9:00 – 12:30 Uhr",
   },
   {
-    name: "Comfort handle",
-    description: "Shaped for steady pours and insulated to prevent burns.",
+    icon: MapPinIcon,
+    title: "Sportplatz USV Bullendorf",
+    text: "Training auf dem Sportplatz",
   },
   {
-    name: "One-button control",
-    description:
-      "The one button control has a digital readout for setting temperature and turning the kettle on and off.",
+    icon: TrophyIcon,
+    title: "3 Trainingseinheiten täglich",
+    text: "Intensives Tormanntraining",
   },
   {
-    name: "Long spout",
-    description:
-      "Designed specifically for controlled pour-overs that don't slash or sputter.",
+    icon: UserGroupIcon,
+    title: "Für Kinder & Jugendliche",
+    text: "Von 8 bis 17 Jahren",
+  },
+  {
+    icon: SparklesIcon,
+    title: "Inklusive Campshirt 2026",
+    text: "Im Preis enthalten",
   },
 ];
 
 export default function Camp() {
   return (
-    <div className="bg-white">
-      <div className="mx-auto max-w-2xl px-4 py-24 sm:px-6 sm:py-32 lg:max-w-7xl lg:px-8">
-        <div className="grid grid-cols-1 items-center gap-x-8 gap-y-16 lg:grid-cols-2">
+    <div className="bg-black">
+      <div className="mx-auto max-w-2xl px-4 pt-24 sm:px-6  lg:max-w-7xl lg:px-8">
+        <div className="grid grid-cols-1 items-center gap-x-8 gap-y-16 lg:grid-cols-2 border-b border-[#afd63f] pb-16">
           <div>
-            <div className="border-b border-gray-200 pb-10">
-              <h2 className="font-medium text-gray-500">Machined Kettle</h2>
-              <p className="mt-2 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
-                Elegant simplicity
+            <div className="border-b border-[#afd63f] pb-10">
+              <p
+                className="text-4xl font-medium text-[#afd63f]"
+                style={{ fontFamily: "'Indie Flower', cursive" }}
+              >
+                Vor den Sommerferien
+              </p>
+              <h2 className="mt-6 max-w-md text-balance font-display text-5xl/20 font-semibold tracking-wider text-white uppercase">
+                {" "}
+                Tormann- trainingscamp
+              </h2>
+              <p className="mt-6 text-balance text-base/8 font-light text-white">
+                  <span className="font-semibold text-black bg-[#afd63f] mx-1 px-1">2 Tage voller Training, Spaß und Entwicklung.</span> Das Camp richtet
+                sich an motivierte Kinder und Jugendliche, die ihre Fähigkeiten
+                im Tor gezielt verbessern möchten.
               </p>
             </div>
 
             <dl className="mt-10 space-y-10">
-              {features.map((feature) => (
-                <div key={feature.name}>
-                  <dt className="text-sm font-medium text-gray-900">
-                    {feature.name}
-                  </dt>
-                  <dd className="mt-3 text-sm text-gray-500">
-                    {feature.description}
-                  </dd>
+              {campDetails.map((detail) => (
+                <div key={detail.title} className="relative">
+                  <div className="flex flex-row gap-4 items-center">
+                    <div className="flex size-10 items-center justify-center rounded-lg bg-black ring-1 ring-[#afd63f]">
+                      <detail.icon
+                        aria-hidden="true"
+                        className="size-6 text-[#afd63f]"
+                      />
+                    </div>
+                    <div>
+                      <dt className="text-base font-bold text-white">
+                        {detail.title}
+                      </dt>
+                      <dd className="mt-2 text-base text-white/80">
+                        {detail.text}
+                      </dd>
+                    </div>
+                  </div>
                 </div>
               ))}
             </dl>
@@ -50,21 +86,65 @@ export default function Camp() {
           <div>
             <img
               alt="Black kettle with long pour spot and angled body on marble counter next to coffee mug and pour-over system."
-              src="https://tailwindcss.com/plus-assets/img/ecommerce-images/product-feature-09-main-detail.jpg"
+              src="/с.png"
               className="aspect-square w-full rounded-lg bg-gray-100 object-cover"
             />
             <div className="mt-4 grid grid-cols-2 gap-4 sm:mt-6 sm:gap-6 lg:mt-8 lg:gap-8">
-              <img
-                alt="Detail of temperature setting button on kettle bass with digital degree readout."
-                src="https://tailwindcss.com/plus-assets/img/ecommerce-images/product-feature-09-detail-01.jpg"
-                className="aspect-square w-full rounded-lg bg-gray-100 object-cover"
-              />
-              <img
-                alt="Kettle spout pouring boiling water into coffee grounds in pour-over mug."
-                src="https://tailwindcss.com/plus-assets/img/ecommerce-images/product-feature-09-detail-02.jpg"
-                className="aspect-square w-full rounded-lg bg-gray-100 object-cover"
-              />
+              <div className="rounded-lg bg-[#afd63f] p-8 text-center">
+                <div className=" flex text-center items-center ">
+                  <span className="mt-6  font-display text-6xl font-semibold tracking-wider text-white uppercase text-center mx-auto">
+                    € 99
+                  </span>
+                </div>
+                <p className="text-2xl font-bold text-black mt-6 ">
+                  Frühbucherpreis
+                </p>
+                <p className=" text-base text-black">
+                  Gültig bei Anmeldung bis 15. Mai 2026.
+                </p>
+              </div>
+              <div className="rounded-lg bg-[#afd63f] p-8 text-center">
+                <div className=" flex  text-center items-center ">
+                  <span className="mt-6  font-display text-6xl font-semibold tracking-wider text-white uppercase text-center mx-auto">
+                    € 119
+                  </span>
+                </div>
+                <p className="text-2xl font-bold text-black mt-6 ">
+                  Normalpreis
+                </p>
+                <p className=" text-base text-black">
+                  Gültig ab 16. Mai 2026.
+                </p>
+              </div>
             </div>
+            <>
+              {" "}
+              <div className="mt-6 flex justify-center">
+                <Link
+                  href="/camp-anmeldung"
+                  className="rounded-md bg-[#afd63f] w-full py-3.5 text-base font-semibold text-black shadow-lg hover:bg-[#273810] transition-colors duration-300 ease-out hover:text-white text-center"
+                >
+                  Jetzt anmelden
+                </Link>
+              </div>
+              <p className="mt-6 text-center text-base/8 text-white/80 text-balance">
+                Fragen? Schreiben Sie uns an{" "}
+                <a
+                  href="mailto:tormannschuleweinviertel@hotmail.com"
+                  className="font-semibold text-[#afd63f] hover:text-white"
+                >
+                  tormannschuleweinviertel@hotmail.com
+                </a>{" "}
+                oder rufen Sie an unter{" "}
+                <a
+                  href="tel:+436643919374"
+                  className="font-semibold text-[#afd63f] hover:text-white"
+                >
+                  +43 664 391 93 74
+                </a>
+                .
+              </p>
+            </>
           </div>
         </div>
       </div>
