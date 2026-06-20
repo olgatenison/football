@@ -42,8 +42,8 @@ const yogaClasses = [
 
 export default function YogaSection() {
   return (
-    <section id="bewegungsschule" className="bg-black py-24 sm:py-32">
-      <div className="mx-auto max-w-2xl px-6 lg:max-w-7xl lg:px-8">
+    <section id="bewegungsschule" className="bg-black py-24  ">
+      <div className="mx-auto max-w-2xl px-6 lg:max-w-7xl lg:px-8 ">
         <p
           className="text-4xl font-medium text-[#afd63f]"
           style={{ fontFamily: "'Indie Flower', cursive" }}
@@ -71,7 +71,7 @@ export default function YogaSection() {
               }`}
             >
               <div
-                className={`relative flex h-full flex-col overflow-hidden rounded-[calc(var(--radius-lg)+1px)] ${
+                className={`border border-[#afd63f]/50 relative flex h-full flex-col overflow-hidden rounded-[calc(var(--radius-lg)+1px)] ${
                   index === 0
                     ? "max-lg:rounded-t-[calc(2rem+1px)] lg:rounded-tl-[calc(2rem+1px)]"
                     : "lg:rounded-tr-[calc(2rem+1px)]"
@@ -152,7 +152,7 @@ export default function YogaSection() {
           ))}
 
           {/*2 ряд  картка 1 */}
-          <div className="relative lg:col-span-2">
+          <div className="relative lg:col-span-2 ">
             <div className="absolute inset-0 rounded-lg bg-[#020202] lg:rounded-bl-4xl" />
             <div className="relative flex h-full flex-col overflow-hidden rounded-[calc(var(--radius-lg)+1px)] lg:rounded-bl-[calc(2rem+1px)]">
               <Image
@@ -179,7 +179,7 @@ export default function YogaSection() {
                 </p>
               </div>
             </div>
-            <div className="pointer-events-none absolute inset-0 rounded-lg shadow outline-1 outline-white/15 lg:rounded-bl-4xl " />
+            <div className="pointer-events-none absolute inset-0 rounded-lg shadow border border-[#afd63f]/50 lg:rounded-bl-4xl " />
           </div>
           {/*2ряд  картка 2 */}
           <div className="relative lg:col-span-2">
@@ -209,7 +209,7 @@ export default function YogaSection() {
                 </p>
               </div>
             </div>
-            <div className="pointer-events-none absolute inset-0 rounded-lg shadow outline-1 outline-white/15" />
+            <div className="pointer-events-none absolute inset-0 rounded-lg shadow border border-[#afd63f]/50" />
           </div>
           {/*2 ряд картка 3 */}
           <div className="relative lg:col-span-2">
@@ -240,7 +240,7 @@ export default function YogaSection() {
                 Website öffnen
               </Link>
             </div>
-            <div className="pointer-events-none absolute inset-0 rounded-lg shadow outline-1 outline-white/20 max-lg:rounded-b-4xl lg:rounded-br-4xl" />
+            <div className="pointer-events-none absolute inset-0 rounded-lg shadow border border-[#afd63f]/50 max-lg:rounded-b-4xl lg:rounded-br-4xl" />
           </div>
         </div>
       </div>

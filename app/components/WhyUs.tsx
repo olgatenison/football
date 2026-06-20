@@ -109,7 +109,7 @@ export default function WhyUs() {
             height={388}
             src="/team.webp"
             alt="Tormanntraining"
-            className="h-auto w-full max-w-md shrink-0 object-contain lg:max-w-lg -m-10"
+            className="h-auto w-full max-w-md shrink-0 object-contain lg:max-w-lg -m-10 rounded-lg"
           />
 
           <p
