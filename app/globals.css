@@ -18,3 +18,25 @@ body {
   color: var(--foreground);
   font-family: var(--font-montserrat), sans-serif;
 }
+.category-scroll {
+  scrollbar-width: thin;
+  scrollbar-color: #525252 #0a0a0a;
+}
+
+.category-scroll::-webkit-scrollbar {
+  height: 6px;
+}
+
+.category-scroll::-webkit-scrollbar-track {
+  background: #0a0a0a;
+  border-radius: 999px;
+}
+
+.category-scroll::-webkit-scrollbar-thumb {
+  background: #525252;
+  border-radius: 999px;
+}
+
+.category-scroll::-webkit-scrollbar-thumb:hover {
+  background: #737373;
+}
