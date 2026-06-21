@@ -6,9 +6,10 @@ import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 // import Image from "next/image";
 
 const navigation = [
-  { name: "Über mich", href: "#" },
+  { name: "Über mich", href: "#about" },
+  { name: "Warum Wir ", href: "#whoisfor" },
   { name: "Tormanntraining für alle Altersklassen", href: "#" },
-  { name: "Warum Wir ", href: "#" },
+
   { name: "Kontakt ", href: "#" },
   { name: "Unsere Sponsoren und Partner", href: "#" },
   { name: "Tormanntrainingscamp", href: "#" },
@@ -19,7 +20,7 @@ export default function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   return (
-    <div className="bg-gray-900">
+    <div className="bg-black">
       <header className="absolute inset-x-0 top-0 z-50">
         <nav
           aria-label="Global"
@@ -61,15 +62,10 @@ export default function Header() {
           className="lg:hidden"
         >
           <div className="fixed inset-0 z-50" />
-          <DialogPanel className="fixed inset-y-0 right-0 z-50 w-full overflow-y-auto bg-gray-900 p-6 sm:max-w-sm sm:ring-1 sm:ring-gray-100/10">
+          <DialogPanel className="fixed inset-y-0 right-0 z-50 w-full overflow-y-auto bg-black p-6 sm:max-w-sm sm:ring-1 sm:ring-gray-100/10">
             <div className="flex items-center justify-between">
               <a href="#" className="-m-1.5 p-1.5">
                 <span className="">Tormann & Bewegungsschule Weinviertel</span>
-                {/* <Image
-                  alt=""
-                  src="https://tailwindcss.com/plus-assets/img/logos/mark.svg?color=indigo&shade=500"
-                  className="h-8 w-auto"
-                /> */}
               </a>
               <button
                 type="button"
@@ -87,7 +83,7 @@ export default function Header() {
                     <a
                       key={item.name}
                       href={item.href}
-                      className="-mx-3 rounded-lg px-3 py-2 text-base/7 font-semibold text-white hover:bg-white/5 block"
+                      className="-mx-3 rounded-lg px-3 py-2 text-base/7  text-white hover:bg-white/5 block"
                     >
                       {item.name}
                     </a>

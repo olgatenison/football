@@ -50,7 +50,7 @@ const benefits = [
 
 export default function WhyUs() {
   return (
-    <section id="warum-wir" className="bg-black py-24">
+    <section id="warum-wir" className="bg-black md:py-20 py-12">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <div className="mx-auto grid max-w-2xl gap-16 pb-32 lg:mx-0 lg:max-w-none lg:grid-cols-3">
           <div>
@@ -61,7 +61,7 @@ export default function WhyUs() {
               Deine Vorteile
             </p>
 
-            <h2 className="mt-6 max-w-md text-balance font-display text-5xl/20 font-semibold tracking-wider text-white">
+            <h2 className="mt-6 max-w-md text-balance font-display text-3xl/12 md:text-5xl/20 font-semibold tracking-wider text-white">
               WARUM UNS WÄHLEN?
             </h2>
 
@@ -93,7 +93,7 @@ export default function WhyUs() {
                   {benefit.title}
                 </dt>
 
-                <dd className="mt-3 text-balance text-base/8 font-light text-white/80">
+                <dd className="mt-3 text-balance text-base/8 font-light text-white/80 ">
                   {benefit.description}
                 </dd>
               </div>
@@ -113,7 +113,7 @@ export default function WhyUs() {
           />
 
           <p
-            className="text-4xl font-medium text-black max-w-lg"
+            className="text-4xl font-medium text-black md:max-w-lg px-6 pb-4 md:text-left text-center md:mx-0 mx-auto text-balance"
             style={{ fontFamily: "'Indie Flower', cursive" }}
           >
             Werde Teil der Tormannschule Weinviertel und entwickle dein volles

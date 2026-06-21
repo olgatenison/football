@@ -4,9 +4,10 @@ import {
   TrophyIcon,
   UserGroupIcon,
   SparklesIcon,
-  ArrowRightIcon,
 } from "@heroicons/react/24/outline";
 import Link from "next/link";
+import Image from "next/image";
+
 const campDetails = [
   {
     icon: CalendarDaysIcon,
@@ -38,7 +39,7 @@ const campDetails = [
 export default function Camp() {
   return (
     <div className="bg-black">
-      <div className="mx-auto max-w-2xl px-4 pt-24 sm:px-6  lg:max-w-7xl lg:px-8">
+      <div className="mx-auto px-4 pt-8 md:pt-24 sm:px-6  max-w-7xl lg:px-8">
         <div className="grid grid-cols-1 items-center gap-x-8 gap-y-16 lg:grid-cols-2 border-b border-[#afd63f] pb-16">
           <div>
             <div className="border-b border-[#afd63f] pb-10">
@@ -48,14 +49,16 @@ export default function Camp() {
               >
                 Vor den Sommerferien
               </p>
-              <h2 className="mt-6 max-w-md text-balance font-display text-5xl/20 font-semibold tracking-wider text-white uppercase">
+              <h2 className="mt-6 md:max-w-md text-balance font-display text-3xl/12 md:text-5xl/20 font-semibold tracking-wider text-white uppercase">
                 {" "}
                 Tormann- trainingscamp
               </h2>
               <p className="mt-6 text-balance text-base/8 font-light text-white">
-                  <span className="font-semibold text-black bg-[#afd63f] mx-1 px-1">2 Tage voller Training, Spaß und Entwicklung.</span> Das Camp richtet
-                sich an motivierte Kinder und Jugendliche, die ihre Fähigkeiten
-                im Tor gezielt verbessern möchten.
+                <span className="font-semibold text-black bg-[#afd63f] mx-1 px-1">
+                  2 Tage voller Training, Spaß und Entwicklung.
+                </span>{" "}
+                Das Camp richtet sich an motivierte Kinder und Jugendliche, die
+                ihre Fähigkeiten im Tor gezielt verbessern möchten.
               </p>
             </div>
 
@@ -84,41 +87,42 @@ export default function Camp() {
           </div>
 
           <div>
-            <img
-              alt="Black kettle with long pour spot and angled body on marble counter next to coffee mug and pour-over system."
+            <Image
+              alt=""
               src="/с.png"
+              width={500}
+              height={500}
               className="aspect-square w-full rounded-lg bg-gray-100 object-cover"
             />
-            <div className="mt-4 grid grid-cols-2 gap-4 sm:mt-6 sm:gap-6 lg:mt-8 lg:gap-8">
-              <div className="rounded-lg bg-[#afd63f] p-8 text-center">
+            <div className="mt-4 grid grid-cols-1 sm:grid-cols-2 gap-4 sm:mt-6 sm:gap-6 lg:mt-8 lg:gap-8">
+              <div className="rounded-lg bg-[#afd63f] p-4 text-center">
                 <div className=" flex text-center items-center ">
-                  <span className="mt-6  font-display text-6xl font-semibold tracking-wider text-white uppercase text-center mx-auto">
+                  <span className="mt-6  font-display text-6xl/24 font-semibold tracking-wider text-white uppercase text-center mx-auto">
                     € 99
                   </span>
                 </div>
-                <p className="text-2xl font-bold text-black mt-6 ">
+                <p className="text-2xl font-bold text-black mt-6 wrap-break-word">
                   Frühbucherpreis
                 </p>
                 <p className=" text-base text-black">
                   Gültig bei Anmeldung bis 15. Mai 2026.
                 </p>
               </div>
-              <div className="rounded-lg bg-[#afd63f] p-8 text-center">
+
+              <div className="rounded-lg bg-[#afd63f] p-4 text-center">
                 <div className=" flex  text-center items-center ">
-                  <span className="mt-6  font-display text-6xl font-semibold tracking-wider text-white uppercase text-center mx-auto">
+                  <span className="mt-6  font-display text-6xl/24 font-semibold tracking-wider text-white uppercase text-center mx-auto">
                     € 119
                   </span>
                 </div>
-                <p className="text-2xl font-bold text-black mt-6 ">
+                <p className="text-2xl font-bold text-black mt-6 wrap-break-word">
                   Normalpreis
                 </p>
-                <p className=" text-base text-black">
-                  Gültig ab 16. Mai 2026.
-                </p>
+                <p className=" text-base text-black">Gültig ab 16. Mai 2026.</p>
               </div>
             </div>
+
             <>
-              {" "}
               <div className="mt-6 flex justify-center">
                 <Link
                   href="/camp-anmeldung"

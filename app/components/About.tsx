@@ -56,25 +56,31 @@ function LogoGrid({ logos }: { logos: Logo[] }) {
 
 export default function About() {
   return (
-    <div className="bg-black py-24 sm:py-32">
+    <div className="bg-black py-18 sm:py-24" id="about">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         {/* Шапка */}
-        <div className="mx-auto flex max-w-4xl items-end gap-x-16">
-          <div className="w-48 shrink-0 overflow-hidden rounded-lg">
+        <div className="mx-auto md:flex max-w-4xl items-end gap-x-16 ">
+          <div className="w-80 md:w-48 shrink-0 overflow-hidden rounded-lg md:mx-0 mx-auto">
             <Image
               src="/about.png"
               alt="Über mich"
               width={300}
               height={350}
-              className="max-h-80 w-full object-cover transition-transform duration-500 ease-out hover:scale-105"
+              className="md:max-h-80 w-full object-cover transition-transform duration-500 ease-out hover:scale-105"
             />
           </div>
+          <p
+            className="block text-center font-medium text-4xl text-[#afd63f] md:hidden mt-3"
+            style={{ fontFamily: "'Indie Flower', cursive" }}
+          >
+            Franz Machaczek
+          </p>
           <div className="relative">
-            <h2 className="max-w-2xl text-balance text-5xl font-semibold tracking-tight text-white sm:text-7xl font-display">
+            <h2 className="md:max-w-2xl text-balance text-5xl/24 font-semibold tracking-tight text-white md:text-7xl font-display md:text-left text-center md:mt-0 mt-3">
               Über mich
             </h2>
             <p
-              className="absolute -top-12 left-24 font-medium text-4xl text-[#afd63f] "
+              className="md:block absolute -top-12 left-24 font-medium text-4xl text-[#afd63f] hidden "
               style={{ fontFamily: "'Indie Flower', cursive" }}
             >
               Franz Machaczek
@@ -82,12 +88,12 @@ export default function About() {
           </div>
         </div>
         {/* Aktive Karriere */}
-        <section className="mt-16">
-          <div className="mx-auto flex max-w-7xl items-start justify-center gap-x-16">
-            <h3 className="mt-1 w-40 shrink-0 text-2xl font-bold text-[#afd63f] font-display">
+        <section className="mt-12">
+          <div className="mx-auto md:flex max-w-7xl items-start justify-center gap-x-16">
+            <h3 className="mt-1 md:w-40 shrink-0 text-2xl font-bold text-[#afd63f] font-display">
               Aktive Karriere
             </h3>
-            <p className="max-w-2xl text-base/8 font-light text-white">
+            <p className="md:mt-0 mt-8 md:max-w-2xl text-base/8 font-light text-white">
               Seit über 40 Jahren ist Fußball meine Leidenschaft. Als aktiver
               Tormann und lizenzierter Tormanntrainer durfte ich wertvolle
               Erfahrungen auf und neben dem Platz sammeln. Bereits seit 2009
@@ -109,9 +115,9 @@ export default function About() {
           </div>
         </section>
         {/* Trainerstationen */}
-        <section className="mt-28">
-          <div className="mx-auto flex max-w-7xl items-start justify-center gap-x-16">
-            <p className="max-w-2xl text-right text-base/8 font-light text-white">
+        <section className="mt-12 md:mt-28">
+          <div className="mx-auto flex flex-col-reverse md:flex-row max-w-7xl items-start justify-center gap-x-16 gap-y-6">
+            <p className="max-w-2xl md:text-right text-base/8 font-light text-white text-left">
               Als Tormanntrainer habe ich in zahlreichen Vereinen und
               Nachwuchsakademien gearbeitet und dabei Torhüter aller
               Altersklassen betreut.{" "}
@@ -122,10 +128,12 @@ export default function About() {
               Mein Ziel ist es, jeden Torhüter individuell zu fördern und dabei
               zu helfen, das persönliche Potenzial bestmöglich auszuschöpfen.
             </p>
-            <h3 className="mt-1 w-40 shrink-0 text-2xl font-bold text-[#afd63f] font-display">
+
+            <h3 className="mt-1 md:w-40 shrink-0 text-2xl font-bold text-[#afd63f] font-display">
               Trainer&shy;stationen
             </h3>
           </div>
+
           <div className="mt-16">
             <LogoGrid logos={trainerLogos} />
           </div>
