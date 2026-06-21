@@ -82,11 +82,13 @@ export default function Footer() {
             ))}
 
             <a
-              href="mailto:dvi.digital2025@gmail.com"
-              className="text-sm/6 text-[#afd63f] transition hover:text-white"
-            >
-              Erstellt von <span className="font-bold">DVI</span>
-            </a>
+  href="https://coming-soon-beige-beta.vercel.app/"
+  target="_blank"
+  rel="noopener noreferrer"
+  className="text-sm/6 text-[#afd63f] transition hover:text-white"
+>
+  Erstellt von <span className="font-bold">DVI</span>
+</a>
           </div>
         </div>
       </div>

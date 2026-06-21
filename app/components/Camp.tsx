@@ -38,7 +38,7 @@ const campDetails = [
 
 export default function Camp() {
   return (
-    <div className="bg-black">
+    <div id="camp" className="bg-black">
       <div className="mx-auto px-4 pt-8 md:pt-24 sm:px-6  max-w-7xl lg:px-8">
         <div className="grid grid-cols-1 items-center gap-x-8 gap-y-16 lg:grid-cols-2 border-b border-[#afd63f] pb-16">
           <div>

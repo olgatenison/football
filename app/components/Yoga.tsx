@@ -44,7 +44,7 @@ const yogaInfo = [
 
 export default function Yoga() {
   return (
-    <section className="bg-black">
+    <section id="yoga" className="bg-black">
       <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 sm:py-24 lg:px-8">
         <p
           className="text-center text-4xl font-medium text-[#afd63f]"

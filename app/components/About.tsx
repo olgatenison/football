@@ -56,7 +56,7 @@ function LogoGrid({ logos }: { logos: Logo[] }) {
 
 export default function About() {
   return (
-    <div className="bg-black py-18 sm:py-24" id="about">
+    <div id="about" className="bg-black py-18 sm:py-24">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         {/* Шапка */}
         <div className="mx-auto md:flex max-w-4xl items-end gap-x-16 ">

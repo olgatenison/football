@@ -3,17 +3,15 @@
 import { useState } from "react";
 import { Dialog, DialogPanel } from "@headlessui/react";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
-// import Image from "next/image";
 
 const navigation = [
   { name: "Über mich", href: "#about" },
-  { name: "Warum Wir ", href: "#whoisfor" },
-  { name: "Tormanntraining für alle Altersklassen", href: "#" },
-
-  { name: "Kontakt ", href: "#" },
-  { name: "Unsere Sponsoren und Partner", href: "#" },
-  { name: "Tormanntrainingscamp", href: "#" },
-  { name: "Bewegungsschule Weinviertel", href: "#" },
+  { name: "Warum Wir", href: "#why-us" },
+  { name: "Tormanntraining für alle Altersklassen", href: "#training" },
+  { name: "Kontakt", href: "#contact" },
+  { name: "Unsere Sponsoren und Partner", href: "#sponsors" },
+  { name: "Tormanntrainingscamp", href: "#camp" },
+  { name: "Bewegungsschule Weinviertel", href: "#yoga" },
 ];
 
 export default function Header() {
@@ -28,12 +26,13 @@ export default function Header() {
         >
           <div className="flex lg:flex-1">
             <a
-              href="#"
-              className="-m-1.5 p-1.5 max-w-40 text-white hover:text-[#afd63f]/60 transition-colors duration-300 ease-out pl-3"
+              href="#home"
+              className="-m-1.5 max-w-40 p-1.5 pl-3 text-white transition-colors duration-300 ease-out hover:text-[#afd63f]/60"
             >
               Tormann & Bewegungsschule Weinviertel
             </a>
           </div>
+
           <div className="flex lg:hidden">
             <button
               type="button"
@@ -44,29 +43,37 @@ export default function Header() {
               <Bars3Icon aria-hidden="true" className="size-6" />
             </button>
           </div>
-          <div className="hidden lg:flex flex-col lg:gap-y-3 max-w-60 text-right pr-4">
+
+          <div className="hidden max-w-60 flex-col text-right lg:flex lg:gap-y-3 lg:pr-4">
             {navigation.map((item) => (
               <a
                 key={item.name}
                 href={item.href}
-                className="text-sm/6  text-white hover:text-[#afd63f]/50 transition-colors duration-300 ease-out"
+                className="text-sm/6 text-white transition-colors duration-300 ease-out hover:text-[#afd63f]/50"
               >
                 {item.name}
               </a>
             ))}
           </div>
         </nav>
+
         <Dialog
           open={mobileMenuOpen}
           onClose={setMobileMenuOpen}
           className="lg:hidden"
         >
           <div className="fixed inset-0 z-50" />
+
           <DialogPanel className="fixed inset-y-0 right-0 z-50 w-full overflow-y-auto bg-black p-6 sm:max-w-sm sm:ring-1 sm:ring-gray-100/10">
             <div className="flex items-center justify-between">
-              <a href="#" className="-m-1.5 p-1.5">
-                <span className="">Tormann & Bewegungsschule Weinviertel</span>
+              <a
+                href="#home"
+                onClick={() => setMobileMenuOpen(false)}
+                className="-m-1.5 p-1.5 text-white"
+              >
+                Tormann & Bewegungsschule Weinviertel
               </a>
+
               <button
                 type="button"
                 onClick={() => setMobileMenuOpen(false)}
@@ -76,14 +83,16 @@ export default function Header() {
                 <XMarkIcon aria-hidden="true" className="size-6" />
               </button>
             </div>
+
             <div className="mt-6 flow-root">
               <div className="-my-6 divide-y divide-gray-500/25">
-                <div className="space-y-2 py-6 ">
+                <div className="space-y-2 py-6">
                   {navigation.map((item) => (
                     <a
                       key={item.name}
                       href={item.href}
-                      className="-mx-3 rounded-lg px-3 py-2 text-base/7  text-white hover:bg-white/5 block"
+                      onClick={() => setMobileMenuOpen(false)}
+                      className="-mx-3 block rounded-lg px-3 py-2 text-base/7 text-white hover:bg-white/5"
                     >
                       {item.name}
                     </a>

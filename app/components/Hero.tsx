@@ -139,7 +139,7 @@ export default function Hero() {
   }, []);
 
   return (
-    <section
+    <section id="home"
       ref={sectionRef}
       className="hero-section relative w-full max-w-7xl mx-auto h-screen min-h-150 max-h-225"
       style={{ clipPath: "inset(0)" }}
@@ -151,7 +151,7 @@ export default function Hero() {
         style={{ inset: "-15% 0" }}
       >
         <Image
-          src="/hero/bg.png"
+          src="/hero/bg2.jpg"
           alt=""
           fill
           priority
@@ -185,7 +185,7 @@ export default function Hero() {
       {/* Layer 3 — руки */}
       <div
         ref={handsRef}
-        className="absolute inset-0 will-change-transform"
+        className="absolute inset-0 will-change-transform mx-2"
         style={{
           opacity: 0,
           transformOrigin: "bottom center",

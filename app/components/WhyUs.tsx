@@ -50,7 +50,7 @@ const benefits = [
 
 export default function WhyUs() {
   return (
-    <section id="warum-wir" className="bg-black md:py-20 py-12">
+    <section id="why-us" className="bg-black md:py-20 py-12">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <div className="mx-auto grid max-w-2xl gap-16 pb-32 lg:mx-0 lg:max-w-none lg:grid-cols-3">
           <div>

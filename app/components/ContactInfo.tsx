@@ -29,7 +29,7 @@ const contactItems = [
 
 export default function ContactInfo() {
   return (
-    <section id="kontakt-direkt" className="relative  bg-black pb-24 pt-12">
+    <section id="contact" className="relative  bg-black pb-24 pt-12">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <div className="grid lg:items-start gap-16 lg:grid-cols-2 items-center">
           <div className="md:max-w-xl lg:w-full mx-auto ">
