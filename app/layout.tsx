@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Montserrat, Boldonse, Indie_Flower } from "next/font/google";
 import "./globals.css";
 import Footer from "./components/Footer";
+import CookieBanner from "./components/CookieBanner";
 
 const boldonse = Boldonse({
   subsets: ["latin"],
@@ -37,6 +38,7 @@ export default function RootLayout({
         className={`${montserrat.variable} ${boldonse.variable} ${indieFlower.variable} min-h-full flex flex-col`}
       >
         {children}
+        <CookieBanner />
         <Footer />
       </body>
     </html>
