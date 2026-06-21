@@ -5,9 +5,7 @@ import About from "./components/About";
 import WhoIsFor from "./components/WhoIsFor";
 import Sponsors from "./components/Sponsors";
 import Yoga from "./components/Yoga";
-import YogaSection from "./components/YogaSection";
 import WhyUs from "./components/WhyUs";
-import RegistrationForm from "./components/RegistrationForm";
 import ContactInfo from "./components/ContactInfo";
 import Camp from "./components/Camp";
 
@@ -21,9 +19,7 @@ export default function Home() {
       <Sponsors />
       <Camp />
       <Yoga />
-      {/* <YogaSection /> */}
       <WhyUs />
-
       <ContactInfo />
     </main>
   );

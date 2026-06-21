@@ -3,9 +3,9 @@ import Categories from "./Categories";
 export default function WhoIsFor() {
   return (
     <section className="bg-black pb-12 ">
-      <div className="mx-auto max-w-7xl px-6 lg:px-8">
-        <div className="mx-auto flex max-w-7xl items-center justify-center gap-x-16">
-          <h2 className="mt-6 text-balance text-5xl/20 font-semibold tracking-tight text-white font-display">
+      <div className="mx-auto max-w-7xl px-6 lg:px-8" id="whoisfor">
+        <div className="mx-auto md:flex max-w-7xl items-center justify-center gap-x-16">
+          <h2 className="mt-6 text-balance  text-3xl/12 md:text-5xl/20 font-semibold tracking-tight text-white font-display">
             Tormanntraining für alle Altersklassen
           </h2>
           <div className="max-w-3xl text-base/8 font-light text-white">

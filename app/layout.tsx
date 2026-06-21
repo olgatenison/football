@@ -33,7 +33,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="de" className="h-full antialiased">
+    <html lang="de" className="h-full antialiased scroll-smooth">
       <body
         className={`${montserrat.variable} ${boldonse.variable} ${indieFlower.variable} min-h-full flex flex-col`}
       >

@@ -119,24 +119,7 @@ export default function ContactForm() {
   }
 
   return (
-    <section id="kontakt" className="relative isolate bg-black px-6  lg:px-8">
-      {/* <div className="mx-auto max-w-2xl text-center">
-        <p
-          className="font-medium text-4xl text-[#afd63f]"
-          style={{ fontFamily: "'Indie Flower', cursive" }}
-        >
-          Kontakt
-        </p>
-
-        <h2 className="mt-6 text-balance text-3xl font-semibold tracking-tight text-white font-display">
-          Schreiben Sie uns
-        </h2>
-
-        <p className="max-w-lg mx-auto text-base/8 font-light text-white mt-6">
-          Wir melden uns schnellstmöglich mit passenden Informationen bei Ihnen.
-        </p>
-      </div> */}
-
+    <section id="kontakt" className="relative isolate bg-black ">
       <form onSubmit={handleSubmit} className="mx-auto mt-12 max-w-xl ">
         <div className="grid grid-cols-1 gap-x-8 gap-y-6 sm:grid-cols-2">
           <div className="sm:col-span-2">
@@ -239,7 +222,7 @@ export default function ContactForm() {
                 type="checkbox"
                 checked={formData.privacy}
                 onChange={handleChange}
-                className="mt-1 size-4"
+                className="mt-1 size-4 accent-[#afd63f]"
               />
 
               <label htmlFor="privacy" className="text-sm/6 text-white/80">

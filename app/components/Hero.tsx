@@ -1,28 +1,48 @@
 "use client";
+
 import Image from "next/image";
 import { useEffect, useRef } from "react";
 
 export default function Hero() {
+  const sectionRef = useRef<HTMLElement>(null);
   const bgRef = useRef<HTMLDivElement>(null);
   const handsRef = useRef<HTMLDivElement>(null);
   const ballRef = useRef<HTMLDivElement>(null);
+
   const ballRotation = useRef(0);
   const caught = useRef(false);
 
-  // Финальные позиции — используем в анимации и параллаксе
-  const HANDS_FINAL_Y = 90;
-  const BALL_FINAL_Y = -70;
+  const getHeroVar = (name: string, fallback: number) => {
+    if (!sectionRef.current) return fallback;
+
+    const value = getComputedStyle(sectionRef.current)
+      .getPropertyValue(name)
+      .trim();
+
+    return value ? Number.parseFloat(value) : fallback;
+  };
 
   useEffect(() => {
     const ball = ballRef.current;
     const hands = handsRef.current;
+
     if (!ball || !hands) return;
+
+    const handsFinalY = getHeroVar("--hero-hands-y", 90);
+    const ballFinalY = getHeroVar("--hero-ball-y", -70);
+    const handsScale = getHeroVar("--hero-hands-scale", 1);
+    const ballScale = getHeroVar("--hero-ball-scale", 0.8);
 
     ball.style.transition = "none";
     hands.style.transition = "none";
 
     ball.style.opacity = "0";
-    ball.style.transform = `translateX(-50%) translateY(-400px) scale(0.3) rotate(-150deg)`;
+    ball.style.transform = `
+      translateX(-50%)
+      translateY(-400px)
+      scale(0.3)
+      rotate(-150deg)
+    `;
 
     hands.style.opacity = "0";
     hands.style.transform = `translateY(220px) scale(0.7)`;
@@ -33,48 +53,74 @@ export default function Hero() {
         ball.style.transition =
           "transform 0.95s cubic-bezier(0.22, 0.61, 0.36, 1), opacity 0.25s ease";
         ball.style.opacity = "1";
-        ball.style.transform = `translateX(-50%) translateY(${BALL_FINAL_Y}px) scale(0.8) rotate(0deg)`;
+        ball.style.transform = `
+          translateX(-50%)
+          translateY(${ballFinalY}px)
+          scale(${ballScale})
+          rotate(0deg)
+        `;
 
         hands.style.transition =
           "transform 1.1s cubic-bezier(0.22, 0.61, 0.36, 1), opacity 0.35s ease";
         hands.style.opacity = "1";
-        hands.style.transform = `translateY(${HANDS_FINAL_Y}px)`;
+        hands.style.transform = `
+          translateY(${handsFinalY}px)
+          scale(${handsScale})
+        `;
       });
     });
 
-    const t1 = setTimeout(() => {
+    const t1 = window.setTimeout(() => {
       caught.current = true;
     }, 1200);
 
-    return () => clearTimeout(t1);
-  });
+    return () => {
+      window.clearTimeout(t1);
+    };
+  }, []);
 
   useEffect(() => {
     const prefersReduced = window.matchMedia(
       "(prefers-reduced-motion: reduce)",
     ).matches;
+
     if (prefersReduced) return;
 
-    let rafId: number;
+    let rafId: number | null = null;
 
     const handleScroll = () => {
       if (!caught.current) return;
+
+      if (rafId) {
+        cancelAnimationFrame(rafId);
+      }
+
       rafId = requestAnimationFrame(() => {
         const scrollY = window.scrollY;
+
+        const handsFinalY = getHeroVar("--hero-hands-y", 90);
+        const ballFinalY = getHeroVar("--hero-ball-y", -70);
+        const handsScale = getHeroVar("--hero-hands-scale", 1);
+        const ballScale = getHeroVar("--hero-ball-scale", 0.8);
 
         if (bgRef.current) {
           bgRef.current.style.transform = `translateY(${scrollY * 0.25}px)`;
         }
+
         if (handsRef.current) {
-          // от финальной позиции + небольшой параллакс
-          handsRef.current.style.transform = `translateY(${HANDS_FINAL_Y + scrollY * 0.1}px)`;
+          handsRef.current.style.transform = `
+            translateY(${handsFinalY + scrollY * 0.1}px)
+            scale(${handsScale})
+          `;
         }
+
         if (ballRef.current) {
           ballRotation.current = scrollY * 0.4;
+
           ballRef.current.style.transform = `
             translateX(-50%)
-            translateY(${BALL_FINAL_Y + scrollY * -0.05}px)
-            scale(0.8)
+            translateY(${ballFinalY + scrollY * -0.05}px)
+            scale(${ballScale})
             rotate(${ballRotation.current}deg)
           `;
         }
@@ -82,15 +128,20 @@ export default function Hero() {
     };
 
     window.addEventListener("scroll", handleScroll, { passive: true });
+
     return () => {
       window.removeEventListener("scroll", handleScroll);
-      cancelAnimationFrame(rafId);
+
+      if (rafId) {
+        cancelAnimationFrame(rafId);
+      }
     };
-  });
+  }, []);
 
   return (
     <section
-      className="relative w-full max-w-7xl mx-auto h-screen min-h-150 max-h-225"
+      ref={sectionRef}
+      className="hero-section relative w-full max-w-7xl mx-auto h-screen min-h-150 max-h-225"
       style={{ clipPath: "inset(0)" }}
     >
       {/* Layer 1 — фон */}
@@ -116,7 +167,7 @@ export default function Hero() {
         style={{
           bottom: "5%",
           left: "50%",
-          width: "530px",
+          width: "var(--hero-ball-size)",
           aspectRatio: "1",
           opacity: 0,
         }}
@@ -134,7 +185,7 @@ export default function Hero() {
       {/* Layer 3 — руки */}
       <div
         ref={handsRef}
-        className="absolute inset-0 will-change-transform "
+        className="absolute inset-0 will-change-transform"
         style={{
           opacity: 0,
           transformOrigin: "bottom center",
@@ -148,6 +199,7 @@ export default function Hero() {
           className="object-cover object-bottom"
         />
       </div>
+
       {/* Layer 4 — градиенты по краям */}
       <div
         className="absolute inset-0 pointer-events-none z-5"
@@ -158,9 +210,9 @@ export default function Hero() {
           `,
         }}
       />
-      {/* Layer 4 — текст */}
-      <div className="relative z-10 flex flex-col items-center justify-center h-full px-6 text-center pointer-events-none ">
-        {/* Заголовок дугой через SVG */}
+
+      {/* Layer 5 — текст */}
+      <div className="relative z-10 flex flex-col items-center justify-center h-full px-6 text-center pointer-events-none">
         <svg
           viewBox="0 0 800 300"
           className="w-full max-w-3xl -mt-10"
@@ -169,6 +221,7 @@ export default function Hero() {
           <defs>
             <path id="arc" d="M 50,250 Q 400,0 750,250" />
           </defs>
+
           <text
             fill="white"
             fontWeight="bold"
@@ -184,18 +237,49 @@ export default function Hero() {
 
         <div className="mt-16 pointer-events-auto">
           <a
-            href="#"
+            href="#kontakt"
             className="rounded-md bg-[#afd63f] px-7 py-3.5 text-sm font-semibold text-black shadow-lg hover:bg-[#273810] transition-colors duration-300 ease-out hover:text-white"
           >
             Jetzt mitmachen
           </a>
         </div>
-        <p className="mt-40 text-white/90 text-base max-w-xl leading-relaxed drop-shadow">
+
+        <p className="mt-20 sm:mt-40 text-white/90 text-base max-w-xl leading-relaxed drop-shadow">
           Jeder einzelne muss persönliche Hürden überwinden. Wie schnell wir ins
           Ziel kommen, spielt dabei keine große Rolle. Wichtig ist nur, jeden
           Tag alles zu geben. Stellst du dich der Herausforderung?
         </p>
       </div>
+
+      <style jsx>{`
+        .hero-section {
+          --hero-ball-size: clamp(260px, 55vw, 530px);
+          --hero-ball-y: -70;
+          --hero-ball-scale: 0.8;
+          --hero-hands-y: 90;
+          --hero-hands-scale: 1;
+        }
+
+        @media (max-width: 480px) {
+          .hero-section {
+            --hero-ball-size: clamp(220px, 72vw, 320px);
+            --hero-ball-y: -35;
+            --hero-ball-scale: 0.75;
+            --hero-hands-y: 125;
+            --hero-hands-scale: 0.85;
+          }
+        }
+
+        @media (max-width: 380px) {
+          .hero-section {
+            --hero-ball-size: clamp(190px, 70vw, 280px);
+            --hero-ball-y: -20;
+            --hero-ball-scale: 0.72;
+            --hero-hands-y: 145;
+            --hero-hands-scale: 0.78;
+          }
+        }
+      `}</style>
     </section>
   );
 }

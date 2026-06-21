@@ -1,10 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import {
-  ClockIcon,
-  ArrowTopRightOnSquareIcon,
-  SparklesIcon,
-} from "@heroicons/react/24/outline";
+import { ClockIcon } from "@heroicons/react/24/outline";
 
 const yogaClasses = [
   {
@@ -57,7 +53,7 @@ export default function Yoga() {
           Yoga & Bewegung
         </p>
 
-        <h2 className="mx-auto mt-6 max-w-2xl text-center text-balance font-display text-5xl/20 font-semibold tracking-wider text-white">
+        <h2 className="mx-auto mt-6 max-w-2xl text-center text-balance font-display text-3xl/12 md:text-5xl/20 font-semibold tracking-wider text-white">
           Bewegungsschule Weinviertel
         </h2>
 
@@ -72,7 +68,7 @@ export default function Yoga() {
               {yogaClasses.map((item) => (
                 <div
                   key={item.title}
-                  className="group relative min-h-[340px] overflow-hidden rounded-lg border border-white/10 bg-zinc-950 p-6 transition hover:border-[#afd63f]/50 hover:bg-zinc-900 lg:min-h-0"
+                  className="group relative min-h-85 overflow-hidden rounded-lg border border-white/10 bg-zinc-950 p-6 transition hover:border-[#afd63f]/50 hover:bg-zinc-900 lg:min-h-0"
                 >
                   <div className="relative z-10 flex h-full flex-col justify-between">
                     <div className="flex w-full flex-row justify-between gap-6">
@@ -127,10 +123,6 @@ export default function Yoga() {
                   key={item.title}
                   className="rounded-lg border border-white/10 bg-zinc-950 p-6 transition hover:border-[#afd63f]/50 hover:bg-zinc-900"
                 >
-                  {/* <div className="mb-4 flex size-10 items-center justify-center rounded-full bg-[#afd63f] text-black">
-                    <SparklesIcon aria-hidden="true" className="size-5" />
-                  </div> */}
-
                   <h4 className="font-display text-xl/7 font-semibold uppercase tracking-wider text-white">
                     {item.title}
                   </h4>
@@ -144,12 +136,12 @@ export default function Yoga() {
           </div>
 
           <div className="grid grid-cols-1 overflow-hidden rounded-lg">
-            <div className="group relative min-h-[520px] overflow-hidden lg:min-h-[540px]">
+            <div className="group relative min-h-130 overflow-hidden lg:min-h-135">
               <Image
                 width={900}
                 height={1100}
                 alt="Yoga und Bewegung"
-                src="/joga.png"
+                src="/girl2.png"
                 className="absolute inset-0 h-full w-full object-cover object-center transition duration-300 group-hover:scale-[1.02]"
               />
             </div>
@@ -181,10 +173,6 @@ export default function Yoga() {
                   className="inline-flex w-full items-center justify-center gap-2 border border-black bg-black px-6 py-5 text-lg font-semibold text-[#afd63f] transition hover:bg-transparent hover:text-black"
                 >
                   Website öffnen
-                  {/* <ArrowTopRightOnSquareIcon
-                    aria-hidden="true"
-                    className="size-5"
-                  /> */}
                 </Link>
               </div>
             </div>

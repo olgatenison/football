@@ -29,7 +29,7 @@ export default function CookieBanner() {
   const consent = useSyncExternalStore(
     subscribe,
     getSnapshot,
-    getServerSnapshot
+    getServerSnapshot,
   );
 
   const isVisible = consent === null;
@@ -43,16 +43,17 @@ export default function CookieBanner() {
 
   return (
     <div className="fixed inset-x-4 bottom-4 z-50 mx-auto max-w-5xl">
-      <div className="rounded-lg border border-lime-400/30 bg-neutral-950 p-5 text-white shadow-2xl">
+      <div className="rounded-lg  bg-black p-5 text-white shadow-2xl">
         <div className="flex flex-col gap-5 md:flex-row md:items-center md:justify-between">
           <div>
-            <p className="text-xs uppercase tracking-[0.25em] text-lime-400">
+            <p
+              className="text-2xl font-medium text-[#afd63f]"
+              style={{ fontFamily: "'Indie Flower', cursive" }}
+            >
               COOKIES
             </p>
 
-            <h2 className="mt-2 text-2xl font-bold">
-              Cookies & Datenschutz
-            </h2>
+            <h2 className="mt-2 text-2xl font-bold">Cookies & Datenschutz</h2>
 
             <p className="mt-2 max-w-2xl text-sm leading-6 text-neutral-300">
               Diese Website verwendet Cookies, um die Benutzererfahrung zu
@@ -70,14 +71,14 @@ export default function CookieBanner() {
           <div className="flex flex-col gap-3 sm:flex-row">
             <button
               onClick={() => setConsent("declined")}
-              className="rounded-full border border-neutral-500 px-5 py-3 text-sm font-semibold transition hover:border-lime-400 hover:bg-lime-400 hover:text-black"
+              className="rounded-md bg-black px-7 py-3.5 text-sm font-semibold text-white shadow-lg hover:bg-[#273810] transition-colors duration-300 ease-out hover:text-white border-white/80 border hover:border-black"
             >
               Ablehnen
             </button>
 
             <button
               onClick={() => setConsent("accepted")}
-              className="rounded-full bg-lime-400 px-5 py-3 text-sm font-semibold text-black transition hover:bg-white"
+              className="rounded-md bg-[#afd63f] px-7 py-3.5 text-sm font-semibold text-black shadow-lg hover:bg-[#273810] transition-colors duration-300 ease-out hover:text-white"
             >
               Akzeptieren
             </button>

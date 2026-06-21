@@ -113,15 +113,13 @@ export default function Categories() {
       >
         <div className="flex gap-4">
           {offers.map((offer) => {
-            const Icon = offer.icon;
-
             return (
               <a
                 key={offer.name}
                 href={offer.href}
                 onClick={handleCardClick}
                 draggable={false}
-                className="group relative flex h-[400px] w-[82vw] shrink-0 select-none flex-col overflow-hidden rounded-2xl border border-white/10 bg-zinc-950 transition duration-300 hover:border-white/25 hover:bg-zinc-900 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#afd63f] sm:w-[46%] lg:w-[31%] xl:w-[calc((100%-48px)/4)]"
+                className="group relative flex h-100 w-[82vw] shrink-0 select-none flex-col overflow-hidden rounded-2xl border border-white/10 bg-zinc-950 transition duration-300 hover:border-white/25 hover:bg-zinc-900 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#afd63f] sm:w-[46%] lg:w-[31%] xl:w-[calc((100%-48px)/4)]"
               >
                 <div className="absolute inset-0 overflow-hidden rounded-2xl">
                   <Image
@@ -133,7 +131,7 @@ export default function Categories() {
                     className="pointer-events-none h-full w-full object-cover transition duration-500 group-hover:scale-[1.03] group-hover:brightness-50 group-focus-visible:scale-[1.03] group-focus-visible:brightness-50"
                   />
 
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-black/0 transition duration-300 group-hover:from-black/95 group-hover:via-black/75 group-hover:to-black/20 group-focus-visible:from-black/95 group-focus-visible:via-black/75 group-focus-visible:to-black/20" />
+                  <div className="absolute inset-0 bg-linear-to-t from-black/70 via-black/30 to-black/0 transition duration-300 group-hover:from-black/95 group-hover:via-black/75 group-hover:to-black/20 group-focus-visible:from-black/95 group-focus-visible:via-black/75 group-focus-visible:to-black/20" />
                 </div>
 
                 <div className="relative z-10 mt-auto p-5">

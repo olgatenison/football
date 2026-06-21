@@ -35,7 +35,7 @@ const initialFormData: FormData = {
 };
 
 const primaryButton =
-  "w-full rounded-md bg-[#afd63f] px-7 py-3.5 text-sm font-semibold text-black shadow-lg transition-all duration-300 hover:bg-[#9ac92f] hover:shadow-xl disabled:cursor-not-allowed disabled:opacity-40";
+  "rounded-md bg-[#afd63f] px-7 py-3.5 text-sm font-semibold text-black shadow-lg hover:bg-[#273810] transition-colors duration-300 ease-out hover:text-white w-full";
 
 const secondaryButton =
   "w-full rounded-md border border-white/20 bg-transparent px-7 py-3.5 text-sm font-semibold text-white transition-all duration-300 hover:bg-white/10";
@@ -254,7 +254,7 @@ export default function RegistrationForm() {
               <button
                 type="button"
                 onClick={nextStep}
-                className={`${primaryButton} max-w-[260px]`}
+                className={`${primaryButton} max-w-65`}
               >
                 weiter
               </button>
@@ -383,8 +383,8 @@ export default function RegistrationForm() {
                 <p className="font-bold text-red-400">Fehler beim Senden</p>
 
                 <p className="mt-2 text-sm text-white/80">
-                  Die Anmeldung konnte nicht gesendet werden. Bitte versuchen Sie
-                  es später erneut.
+                  Die Anmeldung konnte nicht gesendet werden. Bitte versuchen
+                  Sie es später erneut.
                 </p>
               </div>
             )}
@@ -432,7 +432,7 @@ function StepIndicator({ step }: { step: number }) {
 
           {item < 3 && (
             <div
-              className={`mx-4 h-[2px] flex-1 transition-all duration-300 ${
+              className={`mx-4 h-0.5 flex-1 transition-all duration-300 ${
                 step > item ? "bg-[#afd63f]" : "bg-white/15"
               }`}
             />
