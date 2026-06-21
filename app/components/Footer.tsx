@@ -1,6 +1,7 @@
 import Link from "next/link";
 
 const navigation = [
+  { name: "Camp Anmeldung", href: "/camp-anmeldung" },
   { name: "Datenschutz", href: "/datenschutz" },
   { name: "Impressum", href: "/impressum" },
   { name: "AGB", href: "/agb" },
@@ -20,6 +21,13 @@ export default function Footer() {
               Professionelles Tormanntraining, Bewegung und individuelle
               Förderung im Weinviertel.
             </p>
+
+            <Link
+              href="/camp-anmeldung"
+              className="mt-6 inline-flex rounded-full bg-[#afd63f] px-6 py-3 text-sm font-bold text-black transition hover:opacity-90"
+            >
+              Jetzt zum Camp anmelden
+            </Link>
           </div>
 
           <div className="space-y-3 text-sm/6 text-gray-400">
@@ -43,7 +51,10 @@ export default function Footer() {
 
             <p>
               <span className="font-medium text-white">Telefon:</span>{" "}
-              <a href="tel:+436643919374" className="hover:text-white">
+              <a
+                href="tel:+436643919374"
+                className="hover:text-white"
+              >
                 +43 664 391 93 74
               </a>
             </p>
@@ -60,15 +71,22 @@ export default function Footer() {
               <Link
                 key={item.name}
                 href={item.href}
-                className="text-sm/6 text-gray-400 hover:text-white"
+                className={`text-sm/6 transition ${
+                  item.name === "Camp Anmeldung"
+                    ? "font-semibold text-[#afd63f] hover:text-white"
+                    : "text-gray-400 hover:text-white"
+                }`}
               >
                 {item.name}
               </Link>
             ))}
 
-            <p className="text-sm/6 text-[#afd63f]">
-              Erstellt von <span className="font-bold ">DVI</span>
-            </p>
+            <a
+              href="mailto:dvi.digital2025@gmail.com"
+              className="text-sm/6 text-[#afd63f] transition hover:text-white"
+            >
+              Erstellt von <span className="font-bold">DVI</span>
+            </a>
           </div>
         </div>
       </div>
